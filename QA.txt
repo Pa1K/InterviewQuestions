@@ -1,0 +1,73 @@
+1. diff b.w controller and rest controller 
+@RestController = @Controller + @ResponseBody
+
+@RequestMapping(value="/<uri>", method=RequestMethod.POST, produces="application/json")
+produces="application/json" or "application/xml" - method produces output in that format
+@RequestBody
+---------
+2. diff b.w spring and spring boot
+spring - 
+provides multiple modules like (spring core, spring aop, spring jdbc)
+Dependency Injection using @Component, @Autowired
+@Component - we tell Spring framework, this is a bean that you need to manage
+@Autowired - find correct match for this specific type and autowire it in.
+
+Spring solved the following problems
+1. Duplication/Plumbing Code -
+Spring JDBC, Spring MVC, Spring AOP, Spring ORM, Spring JMS, Spring Test
+
+2. Good Integration with Other frameworks
+Hibernate for ORM
+iBatis for Object Mapping
+JUnit & Mockito for Unit Testing
+
+Why we need Spring Boot -
+Spring based applications have a lot of configuration
+
+Autoconfiguration
+Starter projects
+
+spring boot -
+helps to create standalone application
+less or almost zero configuration
+Autoconfiguration is a special feature in spring boot
+
+Benefits of Spring Boot over Spring -
+Dependency resolution
+Min configuration
+Embedded server for testing
+Bean auto scan
+Health metrics
+
+Bean auto scan
+spring - 
+<context:component-scan base-package="com.*"></context:component-scan>
+
+spring-boot -
+@SpringBootApplication
+@ComponentScan(base-package="")
+or
+if don't want to use the ComponentScan follow package structure
+basepackage is where main method present
+for remaining follow basepackage.controller/service like that so no need to mention ComponentScan
+---------------------
+3. diff b.w component and service annotation
+
+@Component  - marks java class as bean
+@Service -  service layer classes for intent - service layer
+@Repository -  for DAO layer  
+@Controller  - Presentation layer
+@Configuration - a class contains one more beans defined inside class
+
+@Bean - to declare a single bean explicitly 
+------------
+4. restcontroller flow in spring
+
+
+
+-------
+courses:
+https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
+https://sso.teachable.com/secure/164090/users/sign_up?after_success_url=%2Fsecure%2F164090%2Fcheckout%2F1561785%2F5-day-learning-challenge-get-started-with-spring-and-spring-boot
+
+
