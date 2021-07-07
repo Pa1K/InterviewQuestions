@@ -48,3 +48,6 @@ HTTP Status Codes:
 401 - unauthorised
 404 - not found
 500 - internal server error
+
+https://www.instantwebtools.net/fake-rest-api
+can be used to test diff HTTP methods
