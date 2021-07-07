@@ -1,0 +1,50 @@
+HTTP METHODS:
+GET - read - fetch data from the server
+POST - create
+PUT - update
+DELETE - delete
+
+idempotent?
+
+HTTP call
+method path protocol
+
+HTTP Header fields -
+General:
+Request URL,
+Request Method,
+Status Code,
+Remote Address,
+Referrer Policy
+
+Response:
+Server,
+Set-Cookie
+Content-Type
+Content-Length
+Date
+
+Request:
+Cookies
+Accept-xxx
+Content-Type
+Content-Length
+Authorization
+User-Agent
+Referrer
+
+HTTP Status Codes:
+1xx - informational
+2xx - succeaa
+3xx - Redirect
+4xx - Client Error
+5xx - Server Error
+
+200 - OK
+201 - OK created
+301 - Moved to new URL
+304 - Not modified (Cached version)
+400 - Bad Request
+401 - unauthorised
+404 - not found
+500 - internal server error
