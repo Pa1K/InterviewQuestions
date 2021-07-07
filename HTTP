@@ -1,7 +1,8 @@
 HTTP METHODS:
 GET - read - fetch data from the server
 POST - create
-PUT - update
+PUT - update/modify entire record
+PATCH - to update/modify part of the record 
 DELETE - delete
 
 idempotent?
