@@ -61,10 +61,17 @@ for remaining follow basepackage.controller/service like that so no need to ment
 
 @Bean - to declare a single bean explicitly 
 ------------
+4. profiles in spring
 
+No active profile set, falling back to default properties: default
+application.yml
+spring.profiles.active: test -- then test profile is used
+application-<profileName>.<extn> -- application-test.yml
+or
+java -jar spring-boot-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=test
 
-
-
+selecting beans by profile -
+@Profile("<env>") on top of bean
 -------
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
