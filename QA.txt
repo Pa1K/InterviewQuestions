@@ -61,7 +61,7 @@ for remaining follow basepackage.controller/service like that so no need to ment
 
 @Bean - to declare a single bean explicitly 
 ------------
-4. restcontroller flow in spring
+
 
 
 
