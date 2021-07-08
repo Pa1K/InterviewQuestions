@@ -1,0 +1,17 @@
+1. Why String is an immutable class
+2. What is immutable class, how to create custom immutable class
+3. What will happen if we clone immutable class
+4. Talk about memory allocation for different wrapper classes
+5. Abstraction,  encapsulation and its significance with real time examples
+6. Class loaders in java
+7. SOLID principles
+8. What is generics
+9. Generics
+10. When u hv hashtable why u need to go to synchronized hashmap
+11. Java 8 features
+12. What is lambda expression
+13. How do u create custom function interface
+14. One problem from stream api
+15. What is the function interface used in filter and map
+16. Predicate,  supplier  , consumer and function
+17. What is flat map
