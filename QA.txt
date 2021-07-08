@@ -73,6 +73,16 @@ java -jar spring-boot-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=test
 selecting beans by profile -
 @Profile("<env>") on top of bean
 -------
+Spring Boot:
+How do handle security in Spring boot application
+How do u run Springboot in other port
+How do u run SB applications in another server by removing tomcat
+Annotations specifically used in Springboot
+What is the significance of @componentscan @configuration
+What @enableautoconfiguration does
+Example of stater packages
+How do u connect to backend
+-------
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
 https://sso.teachable.com/secure/164090/users/sign_up?after_success_url=%2Fsecure%2F164090%2Fcheckout%2F1561785%2F5-day-learning-challenge-get-started-with-spring-and-spring-boot
