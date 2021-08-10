@@ -110,7 +110,9 @@ We need to add @Qualifier along with @Autowired if we want to search by name we 
 
 Ref : https://youtu.be/K43qyHJXmWI
 ------
+@Configuration
 
+-------
 What're diff contexts available in spring and when to  use them?
 
 What are diff ways of getting a bean from container other than context.getBean()
