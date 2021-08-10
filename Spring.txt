@@ -110,10 +110,31 @@ We need to add @Qualifier along with @Autowired if we want to search by name we 
 
 Ref : https://youtu.be/K43qyHJXmWI
 ------
-@Configuration
+ApplicationContext context = new AnnonationConfigApplicationContext(AppConfig.class); 
+This is spring container
 
+ClassA classA = context.getBean(ClassA.class);
+
+@Configuration
+Class annotated with @Configuration i.e AppConfig is responsible for bean creation.
+
+@Configuration
+public class AppConfig {
+
+@Bean
+public ClassA getInstance(){
+return new ClassA();
+}
+
+}
+
+Ref: https://youtu.be/5zUTc-kge8I
 -------
 What're diff contexts available in spring and when to  use them?
+ApplicationContext context = new AnnonationConfigApplicationContext(AppConfig.class);
+
+ConfigurableApplicationContext context = SpringApplication.run(class, args); 
+This is initialisation of spring container
 
 What are diff ways of getting a bean from container other than context.getBean()
 
