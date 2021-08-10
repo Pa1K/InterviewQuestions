@@ -8,6 +8,7 @@ produces="application/json" or "application/xml" - method produces output in tha
 2. diff b.w spring and spring boot
 spring - 
 provides multiple modules like (spring core, spring aop, spring jdbc)
+
 Dependency Injection using @Component, @Autowired
 @Component - we tell Spring framework, this is a bean that you need to manage
 @Autowired - find correct match for this specific type and autowire it in.
@@ -83,6 +84,43 @@ What @enableautoconfiguration does
 Example of stater packages
 How do u connect to backend
 -------
+ConfigurableApplicationContext context = SpringApplication.run(class, args); 
+This is initialisation of spring container
+
+When we annotate a class with @Component, a bean/object of that class created.
+context.getBean(ClassName) - here we are getting object of ClassName from the container.
+
+By default, spring follows singleton design pattern i.e creates an singleton object/bean for all @Component and similar annotated classes.
+
+If we want to create multiple references/objects/beans of a class then we need to use the following annonation
+@Scope(value="prototype")
+But now spring doesn't create any instance of the class unless we call getBean().
+
+When a classA is dependent on  classB,
+Then we need to annotate classB with @Component, so bean is created for classB.
+Now we need to inject/use classB bean/object in classA,
+So by adding @Autowired classB instaceName in classA, we can use classB in classA.
+
+By default, spring creates bean based on ClassName, if we want to create a bean using any specific name then we need to mention like below.
+@Component("withwhatNameBeanNeedtobeCreated)
+
+@Autowired -- searchs by type i.e ClassName
+@Qualifier("nameOfthebeanwewantToSearch)
+We need to add @Qualifier along with @Autowired if we want to search by name we given to bean.
+
+Ref : https://youtu.be/K43qyHJXmWI
+------
+
+What're diff contexts available in spring and when to  use them?
+
+What are diff ways of getting a bean from container other than context.getBean()
+
+How to inject a bean by not using @Autowired?
+What're diff ways to inject a bean by not using @Autowired?
+
+What're uses of @Qualifer?
+
+–---++++
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
 https://sso.teachable.com/secure/164090/users/sign_up?after_success_url=%2Fsecure%2F164090%2Fcheckout%2F1561785%2F5-day-learning-challenge-get-started-with-spring-and-spring-boot
