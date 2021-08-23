@@ -15,3 +15,23 @@
 15. What is the function interface used in filter and map
 16. Predicate,  supplier  , consumer and function
 17. What is flat map
+
+serialisation in java
+hashcode collision
+
+
+Arrays.asList()
+List.of()
+
+distinct ()
+
+collect(Collecters.toList())
+
+For custom classes, implement equals method for the variable which we want distinct.
+
+
+limit(n) 
+Gives first n  values
+
+
+Collections.singletonList()
