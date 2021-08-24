@@ -143,6 +143,47 @@ What're diff ways to inject a bean by not using @Autowired?
 
 What're uses of @Qualifer?
 
+------
+
+
+
+
+
+
+
+How does basic authentication works in REST API?
+session based
+JWT based
+
+session based or JWT based , JWT based is prefered
+as we may have multiple servers and session is specific to a server
+
+we wll get JWT token once authentication done
+so JWT is for authorisation
+
+what is content negotiation?
+consumes={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
+produces={MediaType.APPLICATION_JSON_VALUE}
+
+What are cross cutting concerns?
+For all cross cutting concerns Spring AOP is solution
+
+How do we implement cross cutting concerns in microservices architecture?
+GATE WAY level
+
+How will you create the custom validators in Spring?
+
+
+Spring security internal workflow
+how spring security from authentication works 
+UsernamePasswordAuthenticationFilter 
+	attemptAuthentication
+	
+
+NoopPasswordEncoder is singleton class available in spring framework
+
+
+
 –---++++
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
