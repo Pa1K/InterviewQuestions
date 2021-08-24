@@ -181,8 +181,23 @@ UsernamePasswordAuthenticationFilter
 	
 
 NoopPasswordEncoder is singleton class available in spring framework
+--------
+Spring wt version is used
+spring 4 features
+spring 5 features
 
+cutting point 
 
+how do u handle custom exceptions in spring
+
+@InitBinder
+Flatmap
+
+unit testing using spring
+
+wt dependecnies are needed to see test reports
+
+how do you secure your rest api
 
 –---++++
 courses:
