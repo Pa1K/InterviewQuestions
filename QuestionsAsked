@@ -1,3 +1,51 @@
+Accenture Interview:
+A String given
+Reverse a String
+Reverse each word in a string and print the string
+
+
+Spring MVC 
+Java based annotation
+XML based annotation
+
+how request comes from ui to Spring MVC Controller
+
+diff ways of Dependency Injection
+Autowired
+
+use
+@Configuration
+@Component
+
+how to use db connection details present in remote server from local machine in jboss
+
+why java 8 implemented, to resolve wt issues?
+--------------
+Java Module Lead sopra steria interview Questions: 
+
+java -
+wt is seralisation 
+how to implement seralisation
+what is use of serialisable variable which we declare
+private static final long serialVersionUID = 1L;
+
+spring -
+wt is IOC?
+wt is application context?
+@Autowired
+how do inject a dependency
+@Qualifier
+@SpringBootApplication vs @EnableAutoConfiguration
+@SpringBootApplication
+@Scope - singleton, prototype
+in Controller we are injecting a singleton service bean, in that service we are injecting Dao bean which has prototype Scope, wt will happen
+Spring Actuator
+
+microservices -
+microservices architecture
+how do we mange communication b.w microservices
+how to monitor microservices logs and how do we know exception came from which microservice
+--------------------------
 UST GLOBAL INTERVIEW - 
 wt versions being used?
 java 8
@@ -23,3 +71,4 @@ https://www.dotnettricks.com/learn/sqlserver/difference-between-inner-join-and-e
 https://www.educative.io/edpresso/what-is-an-equi-join-in-sql
 
 @ComponentScan
+----------
