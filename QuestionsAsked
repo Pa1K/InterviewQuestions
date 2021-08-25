@@ -1,8 +1,11 @@
 Accenture Interview:
 A String given
 Reverse a String
-Reverse each word in a string and print the string
+https://www.geeksforgeeks.org/reverse-a-string-in-java/
 
+Reverse each word in a string and print the string
+str.split(" ");
+and reverse each word
 
 Spring MVC 
 Java based annotation
