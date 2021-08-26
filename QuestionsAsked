@@ -25,7 +25,7 @@ how to use db connection details present in remote server from local machine in 
 why java 8 implemented, to resolve wt issues?
 --------------
 Java Module Lead sopra steria interview Questions: 
-
+Round 1 -
 java -
 wt is seralisation 
 how to implement seralisation
@@ -75,3 +75,57 @@ https://www.educative.io/edpresso/what-is-an-equi-join-in-sql
 
 @ComponentScan
 ----------
+Round 2 - Java Module Lead sopra steria interview Questions:
+#DB
+indexing
+performance tuning
+if there are 1lakh records, how will u fetch efficienyly
+how do we know whether query is efficient or not
+how to find employee with 4th highest salary
+
+
+#spring
+do we have dispatcher servlet in spring boot
+dispatcher servlet - spring mvc flow
+
+diff bean scopes
+singleton bean thread safe or not
+how to make singleton bean thread safe
+bean life cycle
+
+spring transaction
+suppose, u updated a table with somedata and another table is not updated, now how will you roll back in both tables incase of failure
+
+#microservices
+API vs microservice
+3 microservices are present A,B,C
+A posted content to B DB, B is not able post conent to C DB, then how wil you roll back the content to original state
+
+
+
+#java
+there is a list of 10 integers,
+multiply even with 3
+odd with 2 and print them
+
+List<Integer> list = Arrays.asList(1,2,3,4,5,6);
+
+   list.stream().map(n -> { if(n%2==0) 
+	        return n=n*3; 
+	       else 
+	       return n=n*2;} ).forEach(System.out::println);
+
+
+2
+6
+6
+12
+10
+18
+
+What is Error, how do you handle it
+can we catch Error, if not why
+
+serialisation
+on diff vm , will serialisation works
+suppose some properties are add to class, post serialisation will we able to retrieve serialised class, if not why
