@@ -1,3 +1,9 @@
 equi joint
 https://www.dotnettricks.com/learn/sqlserver/difference-between-inner-join-and-equi-join-and-natural-join
 https://www.educative.io/edpresso/what-is-an-equi-join-in-sql
+
+indexing
+performance tuning
+if there are 1lakh records, how will u fetch efficienyly
+how do we know whether query is efficient or not
+how to find employee with 4th highest salary
