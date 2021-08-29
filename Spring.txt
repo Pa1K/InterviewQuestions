@@ -8,7 +8,7 @@ Flatmap
 unit testing using spring
 wt dependecnies are needed to see test reports
 
-diff types of bean factories
+diff types of IoC Containers
 bean factory vs application context
 adv of application context over bean factory
 @Required
