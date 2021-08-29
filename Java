@@ -82,3 +82,7 @@ How implement singleton design pattern in java
 
 
 Factory Design Pattern
+------
+stream api, complex methods like grouping by
+immutable class
+hashmap customer key object
