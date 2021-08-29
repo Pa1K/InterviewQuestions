@@ -547,7 +547,20 @@ WebAuthenticationDetailsSource
 chain.doFilter(request,response);
 UsernamePasswordAuthenticationFilter
 
-–---++++
+–-----
+diff types of bean factories
+bean factory vs application context
+adv of application context over bean factory
+@Required
+QueryParams
+RequestParams
+actuator
+diff rest endpoints provided by actuator
+Hystrix diff annotation
+profiles
+global exception handling
+Testing annotations
+-----------
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
 https://sso.teachable.com/secure/164090/users/sign_up?after_success_url=%2Fsecure%2F164090%2Fcheckout%2F1561785%2F5-day-learning-challenge-get-started-with-spring-and-spring-boot
