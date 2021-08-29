@@ -1,6 +1,23 @@
-equi joint
+equi join
 https://www.dotnettricks.com/learn/sqlserver/difference-between-inner-join-and-equi-join-and-natural-join
 https://www.educative.io/edpresso/what-is-an-equi-join-in-sql
+SELECT *
+FROM TableName1, TableName2
+WHERE TableName1.ColumnName = TableName2.ColumnName;
+-- OR
+SELECT *
+FROM TableName1
+JOIN TableName2
+ON TableName1.ColumnName = TableName2.ColumnName;
+
+Non equi join uses, other than = symbol like >,<,>=,<=
+
+
+Diff joins in SQL -
+inner join
+left join
+right join
+full join
 
 indexing
 performance tuning
