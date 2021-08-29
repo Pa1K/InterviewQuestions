@@ -24,3 +24,11 @@ performance tuning
 if there are 1lakh records, how will u fetch efficienyly
 how do we know whether query is efficient or not
 how to find employee with 4th highest salary
+
+
+diff objects in DB like tables
+use of procedures
+use of trigger
+use of aggregator
+functions
+
