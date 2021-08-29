@@ -153,6 +153,48 @@ return new ClassA();
 
 Ref: https://youtu.be/5zUTc-kge8I
 -------
+diff types of Spring IOC Containers -
+https://www.baeldung.com/spring-beanfactory-vs-applicationcontext
+ApplicationContext  - is interface
+BeanFactory
+
+AnnotationConfigApplicationContext
+ClasspathXMLApplicationContext
+FileSystemXMLApplicationContext
+
+The Spring Framework comes with two IOC containers – 
+BeanFactory ( Lazy Loading) and ApplicationContext(Eager Loading). 
+The BeanFactory is the most basic version of IOC containers, and the ApplicationContext extends the features of BeanFactory.
+
+BeanFactory loads beans on-demand, while ApplicationContext loads all beans at startup. Thus, BeanFactory is lightweight as compared to ApplicationContext.
+The beans defined in our BeanFactory will be loaded only when we explicitly call the getBean() method.
+
+ApplicationContext is considered a heavy IOC container because its eager-loading strategy loads all the beans at startup. 
+BeanFactory is lightweight by comparison and could be handy in memory-constrained systems.
+
+ why ApplicationContext is preferred for most use cases.
+ provides messaging (i18n or internationalization) functionality, 
+ event publication functionality, 
+ annotation-based dependency injection, and easy integration with Spring AOP features along with beanfactory features
+ 
+ Apart from this, the ApplicationContext supports almost all types of bean scopes, but the BeanFactory only supports two scopes — Singleton and Prototype. 
+ Therefore, it's always preferable to use ApplicationContext when building complex enterprise applications.
+ 
+ Automatic Registration of BeanFactoryPostProcessor and BeanPostProcessor
+ The ApplicationContext automatically registers BeanFactoryPostProcessor and BeanPostProcessor at startup. On the other hand, the BeanFactory does not register these interfaces automatically.
+
+
+Resource res = new ClassPathResource("ioc-container-difference-example.xml");
+BeanFactory factory = new XmlBeanFactory(res);
+
+ApplicationContext context 
+      = new ClassPathXmlApplicationContext("ioc-container-difference-example.xml");
+    
+Therefore, it's always advisable to use ApplicationContext because Spring 2.0 (and above) heavily uses BeanPostProcessor.
+
+we should use BeanFactory only when memory consumption is critical.
+ if you're using the plain BeanFactory, then features like transactions and AOP will not take effect 
+ -----------
 What're diff contexts available in spring and when to  use them?
 ApplicationContext context = new AnnonationConfigApplicationContext(AppConfig.class);
 
