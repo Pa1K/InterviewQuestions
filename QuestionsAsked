@@ -129,3 +129,45 @@ can we catch Error, if not why
 serialisation
 on diff vm , will serialisation works
 suppose some properties are add to class, post serialisation will we able to retrieve serialised class, if not why
+--------
+
+UST Global -
+#DB
+use of procedures
+use of trigger
+use of aggregator
+functions
+diff objects in DB
+
+#microservices
+design principles
+bounded context
+distributed db management in microservices
+
+#docker
+image creation
+
+#aws
+storage
+
+#springboot
+diff types of bean factories
+bean factory vs application context
+adv of application context over bean factory
+@Required
+QueryParams
+RequestParams
+actuator
+diff rest endpoints provided by actuator
+Hystrix diff annotation
+profiles
+global exception handling
+Testing annotations
+
+#Web Services
+Idempotent
+
+#java
+stream api, complex methods like grouping by
+immutable class
+hashmap customer key object
