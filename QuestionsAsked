@@ -151,7 +151,7 @@ image creation
 storage
 
 #springboot
-diff types of bean factories
+diff types of IoC containers
 bean factory vs application context
 adv of application context over bean factory
 @Required
