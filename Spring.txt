@@ -1,3 +1,36 @@
+Spring wt version is used
+spring 4 features
+spring 5 features
+cutting point 
+how do u handle custom exceptions in spring
+@InitBinder
+Flatmap
+unit testing using spring
+wt dependecnies are needed to see test reports
+
+diff types of bean factories
+bean factory vs application context
+adv of application context over bean factory
+@Required
+QueryParams
+RequestParams
+actuator
+diff rest endpoints provided by actuator
+Hystrix diff annotation
+profiles
+global exception handling
+Testing annotations
+
+Spring Boot:
+How do handle security in Spring boot application
+How do u run Springboot in other port
+How do u run SB applications in another server by removing tomcat
+Annotations specifically used in Springboot
+What is the significance of @componentscan @configuration
+What @enableautoconfiguration does
+Example of stater packages
+How do u connect to backend
+
 1. diff b.w controller and rest controller 
 @RestController = @Controller + @ResponseBody
 
@@ -73,17 +106,7 @@ java -jar spring-boot-config-0.0.1-SNAPSHOT.jar --spring.profiles.active=test
 
 selecting beans by profile -
 @Profile("<env>") on top of bean
--------
-Spring Boot:
-How do handle security in Spring boot application
-How do u run Springboot in other port
-How do u run SB applications in another server by removing tomcat
-Annotations specifically used in Springboot
-What is the significance of @componentscan @configuration
-What @enableautoconfiguration does
-Example of stater packages
-How do u connect to backend
--------
+----------------
 ConfigurableApplicationContext context = SpringApplication.run(class, args); 
 This is initialisation of spring container
 
@@ -144,13 +167,6 @@ What're diff ways to inject a bean by not using @Autowired?
 What're uses of @Qualifer?
 
 ------
-
-
-
-
-
-
-
 How does basic authentication works in REST API?
 session based
 JWT based
@@ -181,21 +197,6 @@ UsernamePasswordAuthenticationFilter
 	
 
 NoopPasswordEncoder is singleton class available in spring framework
---------
-Spring wt version is used
-spring 4 features
-spring 5 features
-
-cutting point 
-
-how do u handle custom exceptions in spring
-
-@InitBinder
-Flatmap
-
-unit testing using spring
-
-wt dependecnies are needed to see test reports
 --------------
 how do you secure your rest api
 How to secure rest api using spring boot
@@ -547,20 +548,85 @@ WebAuthenticationDetailsSource
 chain.doFilter(request,response);
 UsernamePasswordAuthenticationFilter
 
-–-----
-diff types of bean factories
-bean factory vs application context
-adv of application context over bean factory
-@Required
-QueryParams
-RequestParams
-actuator
-diff rest endpoints provided by actuator
-Hystrix diff annotation
-profiles
-global exception handling
-Testing annotations
 -----------
+Spring Boot Global Excetion Handling -
+https://www.youtube.com/watch?v=hLlGAQ5NfTE
+
+Q) Need of  Global Exception handling. Why to do Spring Boot Exception Handling? Global exception handling in spring boot needs?
+In Real World projects, Its very important to handle errors correctly and simultaneously provide meaningful error messages to the clients too. 
+Hence we need Exception handling in Spring boot , Spring Boot Exception Handling or Global exception handling in spring boot.
+Today we will see how to properly handle errors specifically in spring boot.
+Prerequisite : Spring boot, Creation of Rest APIs
+
+Q) How can we make Error response clear in spring boot exception handling
+We are lucky enough that Spring already comes with the built in support for error handling. 
+It’s our job to understand and implement it. And today we are going to do that to do exception handling in Spring Boot Application
+
+Q) Annotation used for Spring Boot Error Handling 
+For Exception handling in spring boot in global exception handling , we need following annotations - 
+
+@RestController : 
+is the base annotation for classes that handle REST operations.
+
+@ControllerAdvice : 
+The @ControllerAdvice annotation handles exceptions globally – it allows you to use the same ExceptionHandler for multiple controllers. 
+This way, we can define how to treat an exception in just one place because this handler will be called whenever the exception is thrown from classes that are covered by ControllerAdvice.
+as the name suggests, is “Advice” for multiple controllers.
+allows our class to be a global interceptor of exceptions thrown by methods annotated by @RequestMapping.
+
+@ExceptionHandler  : 
+Spring annotation that provides a mechanism to treat 
+exceptions that are thrown during execution of handlers (Controller operations). 
+This annotation, if used on methods of controller classes, will serve as the entry point for handling exceptions thrown within this controller only. 
+
+Altogether, the most common way is to use @ExceptionHandler on methods of @ControllerAdvice classes so that the exception handling will be applied globally or to a subset of controllers.
+
+
+@ExceptionHandler and @ControllerAdvice are used to define a central point for treating exceptions and wrapping them up in a class.
+
+@ResponseStatus
+You can also override the existing exception handlers. 
+Spring Boot’s built-in exception class ResponseEntityExceptionHandler has multiple methods that you can override to customize the exception handling further.
+
+
+@ControllerAdvice
+public class MyControllerAdvice {
+	
+	@ExceptionHandler(CustomExceptionClassName.class)
+	public ResponseEntity<String> handleException(CustomException customException)	{
+		return new ResponseEntity<String>("ErrorMsgWhichWeWanttoShowtoUser","StatusCode");
+	}
+	
+	@ExceptionHandler(BuiltinExceptionClassName.class)
+	public ResponseEntity<String> handleNoSuchElemenyException(BuiltinException builtinException)	{
+		return new ResponseEntity<String>("ErrorMsgWhichWeWanttoShowtoUser","StatusCode");
+	}
+}
+
+
+@ControllerAdvice
+public class MyControllerAdvice extends ResponseEntityExceptionHandler {
+	
+	@ExceptionHandler(CustomExceptionClassName.class)
+	public ResponseEntity<String> handleException(CustomException customException)	{
+		return new ResponseEntity<String>("ErrorMsgWhichWeWanttoShowtoUser","StatusCode");
+	}
+	
+	@ExceptionHandler(BuiltinExceptionClassName.class)
+	public ResponseEntity<String> handleNoSuchElemenyException(BuiltinException builtinException)	{
+		return new ResponseEntity<String>("ErrorMsgWhichWeWanttoShowtoUser","StatusCode");
+	}
+	
+	
+	//we can override the methods in ResponseEntityExceptionHandler
+	@Override
+	protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex,
+				HttpHeader headers, HttpStatus status, WebRequest request) {
+				
+				return new ResponseEntity<Object>("please change http method type", HttpSatus.NOT_FOUND);
+				}
+}
+-------------
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
 https://sso.teachable.com/secure/164090/users/sign_up?after_success_url=%2Fsecure%2F164090%2Fcheckout%2F1561785%2F5-day-learning-challenge-get-started-with-spring-and-spring-boot
