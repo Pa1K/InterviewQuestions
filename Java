@@ -49,8 +49,34 @@ Other examples of marker interfaces are:- Cloneable and Remote.
 transient keyword?
 https://www.geeksforgeeks.org/transient-keyword-java/
 -----------
+HashMap vs SynchronizedMap vs HashTable vs ConcurrentHashMap
 
+HashMap
+Not thread-safe
+Can have one null key and multiple null values
 
+SynchronizedMap
+thread-safe
+Slow performance
+null key and multiple null values are allowed
+
+HashTable
+thread-safe
+Slow performance
+null key-and-values are not allowed
+
+ConcurrentHashMap
+thread-safe
+fast performance
+null key-and-values are not allowed
+Map is divieded into 16 segments
+when we are doing write operation, only that particular thread is locked
+so we can write to another segement, which results in faster response bcz of less waiting time.
+incase of read, no lock. any number of threads can read.
+
+Ref:
+https://youtu.be/UwurUtvil7w
+-----------
 Arrays.asList()
 List.of()
 
