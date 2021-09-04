@@ -30,6 +30,9 @@ For custom classes, implement equals method for the variable which we want disti
 
 Collections.singletonList()
 
+
+----
+Why String is immutable?
 -------
 How hashmap works?
 Map Interface
