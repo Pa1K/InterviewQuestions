@@ -34,6 +34,37 @@ Collections.singletonList()
 ----
 Why String is immutable?
 -------
+interface vs abstract class
+interface A {
+
+}
+
+
+
+abstract class A {
+
+}
+
+all interface methods are by default -  public abstract
+abstract methods doesn't have a body
+
+abstract class contains abstract, concrete methods
+
+multiple inheritance can be achieved by Inheritance
+same can't be achieved by abstract class
+
+variables -
+interface : by default, public static final  and intialisation of variables is mandatory.
+abstract class: no restrictions on variables and on intialisation of variables
+
+constructor -
+interface - can't have a constructor
+abstract class - can have a constructor
+can't create an object for both interface and abstract as methods are not defined 
+
+Ref:
+https://www.youtube.com/watch?v=Ud0zfImgbYw
+-------
 How hashmap works?
 Map Interface
 HashMap class
