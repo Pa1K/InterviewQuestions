@@ -573,3 +573,22 @@ lstEmp.stream().filter(emp -> emp.getYearsInOrg() < 1)
         .sorted((e1, e2) -> e1.getId() - e2.getId())
         .forEach((e) -> System.out.println(e.getId() + ":" + e.getName()));
 -----------
+List<String> list = new ArrayList<>();
+list.add() - add names to list
+find names starting with a letter
+http://www.java2s.com/Tutorials/Java/Stream_How_to/Stream_Filter/Filter_String_value_with_starting_letter.htm
+Stream<String> s = names.stream().filter(name -> name.startsWith("C"));
+
+https://www.technicalkeeda.com/java-8-tutorials/java-8-stream-count
+long count = colours.stream().filter(predicate).count();
+--------
+list contains N no of duplicate elements, remove duplicate elements without using set or map
+List<Interger> list = new ArrayList<>();
+https://howtodoinjava.com/java8/java-stream-distinct-examples/
+-----
+using streams to iterate over a collection 
+an employee list given, employee[name, salary,id]
+find employees with salary greater than 50k, and unique names
+https://stackoverflow.com/questions/29670116/remove-duplicates-from-a-list-of-objects-based-on-property-in-java-8
+https://howtodoinjava.com/java8/java-stream-distinct-examples/
+--------
