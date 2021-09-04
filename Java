@@ -30,7 +30,89 @@ For custom classes, implement equals method for the variable which we want disti
 
 Collections.singletonList()
 
+-------
 How hashmap works?
+Map Interface
+HashMap class
+
+Array of buckets,
+each bucket is a node/linkedlist
+16 default bucket size
+
+hashMap.put(key,value)
+hashCode of key is calcualted
+hashCode helps to find index/bucket
+
+if hashCode is bigger number then lot of space goes array allocation
+instead of that we do modular operation on hashCode
+
+after index is calculated it's stored in that index related node/bucket
+each node is a linkedlist
+each node stores the following values
+key, value, hashCode, next
+
+node = hashCode | key | value | null
+
+hashMap.put(key2,value2)
+calculated hashCode of key2
+using hashCode, index is calculated
+
+if two keys return same hashCode, then it's hashCollision
+then another node is created in the linkedlist where already one node is present
+
+
+hashCode | key | value | points to next node -->  hashCode | key2 | value2 | null
+
+in map, we can enter null as key.
+when ever key is null, it goes to 0 index
+
+
+Map<String,Integer> map = new HashMap<>();
+map.put("aaa",1);
+
+map has size, table
+default size - 16
+table has array of buckets
+table = HashMap$Node<K,V>
+$ signifies Node is innerClass of HashMap
+
+String str1 = "FB";
+String str2 = "Ea";
+str1, str2 return same hashCode
+
+if two keys return same hashCode, then it's hashCollision
+str1 is stored in first node, str2 in second node of same linkedlist
+
+
+#During duplicate key
+latest value gets updated
+
+#During null key
+when ever key is null, it goes to 0 index
+
+loadFactor, threshold 
+default loadFactor=0.75
+when map is 75% full, table size will be doubled
+
+how do we know map is 75% full, we come to know by threshold
+threshold = loadFactor * size
+default threshold = 0.75 * 16 = 12
+
+when map crosses threshold, table size will be doubled
+
+
+# get operation
+hashCode of key is compared
+then equals() method to compare key
+if key doesn't match goes to next node of the linkedList and does same
+once key is matched, we will get the value of the key  
+
+Ref:
+https://www.youtube.com/watch?v=CojCE-ojdGY
+https://www.youtube.com/watch?v=fSjxhOYPBRI
+https://www.youtube.com/watch?v=AVSGJHrrLpE
+----------
+
 equals and hashcode
 
 List vs Set
