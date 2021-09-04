@@ -17,7 +17,39 @@
 17. What is flat map
 ---------
 serialisation in java
-hashcode collision
+serialization -
+Classes that are eligible for serialization need to implement a special marker interface Serializable.
+
+The most important method in ObjectOutputStream is:
+public final void writeObject(Object o) throws IOException;
+Which takes a serializable object and converts it into a sequence (stream) of bytes. 
+
+Similarly, the most important method in ObjectInputStream is:
+public final Object readObject() 
+  throws IOException, ClassNotFoundException;
+Which can read a stream of bytes and convert it back into a Java object. This can then be cast back to the original object.
+
+static fields belong to a class, and are not serialized
+we can use the keyword transient to ignore class fields during serialization
+
+NotSerializableException
+
+InvalidClassException
+
+Ref: 
+https://www.baeldung.com/java-serialization
+https://www.geeksforgeeks.org/serialization-in-java/
+
+
+what are marker interfaces in java and what marker interface mean?
+a marker interface has no data member and method
+It is used to “mark” java classes so that objects of these classes may get certain capability. 
+Other examples of marker interfaces are:- Cloneable and Remote.
+
+transient keyword?
+https://www.geeksforgeeks.org/transient-keyword-java/
+-----------
+
 
 Arrays.asList()
 List.of()
@@ -66,6 +98,8 @@ Ref:
 https://www.youtube.com/watch?v=Ud0zfImgbYw
 -------
 How hashmap works?
+hashcode collision
+
 Map Interface
 HashMap class
 
