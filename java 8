@@ -592,3 +592,73 @@ find employees with salary greater than 50k, and unique names
 https://stackoverflow.com/questions/29670116/remove-duplicates-from-a-list-of-objects-based-on-property-in-java-8
 https://howtodoinjava.com/java8/java-stream-distinct-examples/
 --------
+Diff operations types in Stream
+The terminal operations return a result of a certain type and 
+intermediate operations return the stream itself so we can chain multiple methods in a row to perform the operation in multiple steps.
+
+Streas work on which Data structure 
+Streams are created on a source, e.g. a java.util.Collection like List or Set. 
+The Map is not supported directly, we can create stream of map keys, values or entries.
+
+Stream operations can either be executed sequentially or parallel. 
+when performed parallelly, it is called a parallel stream.
+
+Based on the above points, if we list down the various characteristics of Stream, they will be as follows:
+Not a data structure
+Designed for lambdas
+Do not support indexed access
+Can easily be aggregated as arrays or lists
+Lazy access supported
+Parallelizable
+
+
+
+3. Stream Collectors
+
+4. Stream Operations
+
+5. Stream Short-circuit Operations
+
+6. Parallelism in Java Steam
+
+   
+        
+        
+Ref:
+https://www.youtube.com/watch?v=J-RTlluJv7E&list=PLyHJZXNdCXsdeusn4OM33415DCMQ6sUKy
+https://www.youtube.com/watch?v=cqQN8g4oR98&list=PLyHJZXNdCXsdeusn4OM33415DCMQ6sUKy&index=6
+https://www.youtube.com/watch?v=0bHCxjkku0s
+https://lex.infosysapps.com/en/viewer/web-module/lex_28368141434068914000?collectionId=lex_25529606976739830000&collectionType=Course
+https://javaconceptoftheday.com/java-8-stream-intermediate-and-terminal-operations/
+https://stackabuse.com/java-8-how-to-sort-list-with-stream-sorted/
+https://howtodoinjava.com/java8/java-streams-by-examples/
+https://howtodoinjava.com/java/collections/arraylist/remove-duplicate-elements/
+https://howtodoinjava.com/java8/java-stream-distinct-examples/
+-----
+
+Optional class - yet to read
+https://www.baeldung.com/java-optional
+https://www.oracle.com/technical-resources/articles/java/java8-optional.html
+https://www.geeksforgeeks.org/java-8-optional-class/#:~:text=Java%208%20has%20introduced%20a,or%20alternate%20code%20to%20run.
+------
+forEach() is a default method in the List interface whose inclusion does not force the existing implementations like ArrayList to be modified.
+
+functional programming vs oops
+https://www.youtube.com/watch?v=cwV1ekXSMV0
+-------
+#find no.of occurrences of all characters in a string
+HashMap<Character,Integer> hm = new HashMap();
+        
+        for(int i=0;i<str.length();i++){
+            if(hm.containsKey(str.charAt(i)))
+                hm.put(str.charAt(i),hm.get(str.charAt(i))+1);
+            else
+                hm.put(str.charAt(i),1);
+        }
+        
+https://docs.oracle.com/javase/8/docs/api/java/util/HashMap.html
+https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html
+----
+finding occurance of known character
+long count = someString.chars().filter(ch -> ch == 'e').count();
+----
