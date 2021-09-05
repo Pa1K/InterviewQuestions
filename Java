@@ -16,6 +16,22 @@
 16. Predicate,  supplier  , consumer and function
 17. What is flat map
 ---------
+#transient keyword
+Serialization is a process by which the object's state is saved by JVM and during deserialization, it’s recovered by JVM. 
+During Serialization all property of object gets saved except static and transient.
+In one word transient keyword is used in the serialization process to prevent any variable from being serialized
+While marking any property transient it's worth noting to provide it a default value during deserialization otherwise deserialized object is not properly used.
+any variable whose value can be calculated from other variables doesn't require to be saved, so make it transient.
+1) A transient keyword can only be applied to fields or member variables. Applying it to the method or local variable is a compilation error.
+2) Another important point is that you can declare a variable static and transient at the same time and the java compiler doesn't complain but doing that doesn't make any sense because the transient is to instruct "do not save this field" and static variables are not saved anyway during serialization.
+3) In a similar way you can apply transient and final keywords together to a variable compiler that will not complain but you will face another problem of reinitializing a final variable during deserialization.
+the transient keyword is used during serialization of Java object
+4) A transient variable in java is not persisted or saved when an object gets serialized.
+
+
+Ref:
+https://javarevisited.blogspot.com/2011/09/transient-keyword-variable-in-java.html#axzz75arPQxam
+-------------
 serialisation in java
 serialization -
 Classes that are eligible for serialization need to implement a special marker interface Serializable.
