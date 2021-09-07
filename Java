@@ -32,6 +32,10 @@ the transient keyword is used during serialization of Java object
 Ref:
 https://javarevisited.blogspot.com/2011/09/transient-keyword-variable-in-java.html#axzz75arPQxam
 -------------
+Marker Interface:
+https://javaconceptoftheday.com/marker-interface-java/
+https://www.baeldung.com/java-marker-interfaces
+----------
 serialisation in java
 serialization -
 Classes that are eligible for serialization need to implement a special marker interface Serializable.
@@ -399,3 +403,36 @@ Factory Design Pattern
 stream api, complex methods like grouping by
 immutable class
 hashmap customer key object
+-------
+
+#multi Thread
+There is no init() method in the Thread class.
+The start() method causes this thread to begin execution; the Java Virtual Machine calls the run method of this thread.
+The run() method of a thread is like the main() method to an application. Starting the thread causes the object's run method to be called in that separately executing thread.
+The resume() method is deprecated. It resumes a suspended thread.
+The methods isInterrupted() and interrupt() are instance methods of Thread.
+sleep() and yield() are static methods of Thread.
+synchronized is a keyword and the synchronized() construct is part of the Java language.
+The stop() method is deprecated. It forces the thread to stop executing.
+
+The Object class defines these thread-specific methods.
+wait(), notify(), notifyAll()
+
+
+wait() always causes the current thread to go into the object's wait pool.
+sleep() will always pause the currently running thread for at least the duration specified in the sleep argument (unless an interrupted exception is thrown).
+assuming that the thread you're calling join() on is alive, the thread calling join() will immediately block until the thread you're calling join() on is no longer alive.
+The yield() method is not guaranteed to cause a thread to leave the running state, although if there are runnable threads of the same priority as the currently running thread, 
+then the current thread will probably leave the running state.
+
+
+notify() - wakes up a single thread that is waiting on this object's monitor.
+
+valid constructors
+Thread() 
+Thread(Runnable r, String name), 
+Thread(ThreadGroup g, Runnable r )
+
+X run = new X(); 
+Thread t = new Thread(run); 
+t.start();
