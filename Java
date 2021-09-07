@@ -229,6 +229,42 @@ Hence the order of catch blocks must be from most specific to most general ones.
 
 Ref:
 https://www.youtube.com/watch?v=gXctfxRV-gY
+
+
+
+ 	       ---> Throwable <--- 
+              |    (checked)     |
+              |                  |
+              |                  |
+      ---> Exception           Error
+      |    (checked)        (unchecked)
+      |
+RuntimeException
+  (unchecked)
+  
+There are three main categories of exceptional conditions:
+Checked exceptions
+Unchecked exceptions / Runtime exceptions
+Errors
+Runtime and unchecked exceptions refer to the same thing. We can often use them interchangeably. 
+
+Checked exceptions are exceptions that the Java compiler requires us to handle. We have to either declaratively throw the exception up the call stack, or we have to handle it ourselves. 
+A couple of examples of checked exceptions are IOException and ServletException.
+
+Unchecked exceptions are exceptions that the Java compiler does not require us to handle.
+Simply put, if we create an exception that extends RuntimeException, it will be unchecked; otherwise, it will be checked.
+
+a situational error (checked) and a usage error (unchecked).
+Some examples of unchecked exceptions are NullPointerException, IllegalArgumentException, and SecurityException.
+
+Errors represent serious and usually irrecoverable conditions like a library incompatibility, infinite recursion, or memory leaks.
+And even though they don't extend RuntimeException, they are also unchecked.
+In most cases, it'd be weird for us to handle, instantiate or extend Errors. Usually, we want these to propagate all the way up.
+A couple of examples of errors are a StackOverflowError and OutOfMemoryError.
+
+
+Ref:
+https://www.baeldung.com/java-exceptions
 ---------
 Arrays.asList()
 List.of()
