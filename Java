@@ -16,6 +16,20 @@
 16. Predicate,  supplier  , consumer and function
 17. What is flat map
 ---------
+#inheritance
+Parent parent = new Child();
+or
+Child child = new Child();
+then if the method is available in child then child method is considered
+if method is not present in child, but present in parent, then we call parent method.
+
+Child child2 = (Child) new Parent(); 
+Exception in thread "main" 
+java.lang.ClassCastException: class com.pavan.inheritance.Parent cannot be cast to class com.pavan.inheritance.Child 
+(com.pavan.inheritance.Parent and com.pavan.inheritance.Child are in unnamed module of loader 'app')
+casting can't be done to child from parent.
+-----------
+
 #transient keyword
 Serialization is a process by which the object's state is saved by JVM and during deserialization, it’s recovered by JVM. 
 During Serialization all property of object gets saved except static and transient.
