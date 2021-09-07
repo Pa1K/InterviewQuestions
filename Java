@@ -139,10 +139,12 @@ if we didn't caught error, program execution gets stopped
 
 Since the java.lang.Error class in Java doesn't inherit from java.lang.Exception, 
 we must declare the Error base class – or the specific Error subclass we'd like to capture – in the catch statement in order to catch it.
-Please note that the Java Virtual Machine throws errors to indicate severe problems from which it can't recover, such as lack of memory and stack overflows, among others. 
+
+Please note that the Java Virtual Machine throws errors to indicate severe problems from which it can't recover, 
+such as lack of memory and stack overflows, among others. 
 Thus, we must have a very, very good reason to catch an error!
 
-https://www.baeldung.com/java-error-catch
+Ref: https://www.baeldung.com/java-error-catch
 
 
 java.lang.Object
