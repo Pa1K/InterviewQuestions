@@ -83,6 +83,49 @@ below are the concurrent classes introduced in java 5 within java.util.concurren
 4. ConcurrentHashMap
 5. BlockingQueue
 ----------
+Initializing a List in Java
+
+The Java.util.List is a child interface of Collection
+It is an ordered collection of objects in which duplicate values can be stored. 
+Since List preserves the insertion order, it allows positional access and insertion of elements. 
+List Interface is implemented by ArrayList, LinkedList, Vector and Stack classes.
+
+1. list.add();
+2. Double Brace Initialisation
+List<Integer> list=new ArrayList<Integer>(){{
+                        add(1);
+                        add(2);
+                        add(3);
+                          }};
+3.Arrays.asList()
+List<Integer> list = Arrays.asList(1, 2, 3);
+Arrays.asList() creates an immutable list from an array.
+
+4. Creating Mutable List
+List<Integer> list=new ArrayList<>(Arrays.asList(1, 2, 3));
+
+5. Using Collections.addAll()
+List<Integer> list = Collections.EMPTY_LIST;
+Collections.addAll(list = new ArrayList<Integer>(), 1, 2, 3, 4);
+
+6. Using Collections.unmodifiableList()
+List<Integer> list = Collections.unmodifiableList(Arrays.asList(1, 2, 3));
+   
+7. Using Collections.singletonList()     
+Collections.singletonList() returns an immutable list consisting of one element only.
+List<Integer> list = Collections.singletonList(2);
+
+8.using stream
+1.  List<Integer> list = Stream.of(1, 2, 3).collect(Collectors.toList());
+2.  List<Integer> list = Stream.of(1, 2, 3).collect(Collectors.toCollection(ArrayList::new));
+3.  List<Integer> list  = Stream.of(1, 2, 3, 4).collect(Collectors.collectingAndThen(Collectors.toList(), Collections::unmodifiableList));
+
+9. Using Java 9 List.of()
+List<Integer> unmodifiableList = List.of(1, 2, 3);
+
+Ref:
+https://www.geeksforgeeks.org/initializing-a-list-in-java/
+---------------
 HashMap
 remove(Object key) - Removes the mapping for the specified key from this map if present.
 clear() - Removes all of the mappings from this map, The map will be empty after this call returns.
