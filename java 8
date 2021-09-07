@@ -662,3 +662,27 @@ https://docs.oracle.com/javase/8/docs/api/java/util/Collections.html
 finding occurance of known character
 long count = someString.chars().filter(ch -> ch == 'e').count();
 ----
+map()
+flatMap()
+
+intermediate methods
+map() - used for transformation
+flatMap() - used for transformation & flattering
+
+flatMap() = map() + flattering
+
+<R> Stream<R> map(Function<? super T, ? extends R> mapper);
+map() takes Stream<T> as input, return Stream<R>
+One-to-One mapping
+
+<R> Stream<R> flatMap(Function<? super T, ? extends Stream<? extends R>> mapper);
+takes Stream<Stream<T>> as input, return Stream<R>
+it's mapper function produces multiple value for each input value.
+hence it's also called One-to-Many Mapping
+
+transformation is updating data from one value to another value
+flattering is converting stream into single stream
+
+
+https://www.youtube.com/watch?v=CwvlS3ViGFQ
+---------
