@@ -65,7 +65,20 @@ Other examples of marker interfaces are:- Cloneable and Remote.
 transient keyword?
 https://www.geeksforgeeks.org/transient-keyword-java/
 -----------
+By design, 
+all the collection classes in java.util package are fail fast
+where as collection classes in java.util.concurrent are fail safe
 
+Fail-fast iterators throw ConcurrentModificationException where as
+fail-safe iterator never throws ConcurrentModificationException
+
+below are the concurrent classes introduced in java 5 within java.util.concurrent package
+1. CountDownLatch
+2. CyclicBarrier
+3. CopyOnWriteArrayList
+4. ConcurrentHashMap
+5. BlockingQueue
+----------
 HashMap
 remove(Object key) - Removes the mapping for the specified key from this map if present.
 clear() - Removes all of the mappings from this map, The map will be empty after this call returns.
