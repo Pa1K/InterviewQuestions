@@ -65,6 +65,14 @@ Other examples of marker interfaces are:- Cloneable and Remote.
 transient keyword?
 https://www.geeksforgeeks.org/transient-keyword-java/
 -----------
+
+HashMap
+remove(Object key) - Removes the mapping for the specified key from this map if present.
+clear() - Removes all of the mappings from this map, The map will be empty after this call returns.
+To delete all pairs of keys and values in a given HashMap,
+The java.util.HashMap.clear() method in Java is used to clear and remove all of the elements or mappings from a specified HashMap.
+https://www.geeksforgeeks.org/hashmap-clear-method-in-java/
+-----------
 HashMap vs SynchronizedMap vs HashTable vs ConcurrentHashMap
 
 HashMap
