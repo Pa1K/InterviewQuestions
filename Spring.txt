@@ -669,6 +669,113 @@ public class MyControllerAdvice extends ResponseEntityExceptionHandler {
 				}
 }
 -------------
+#db rollback in spring 
+
+@Transactional for unchecked/runtime exception on top of method definition
+@Transactional(rollbackFor=CheckedException.class) for checked exception
+
+
+dependecies : Lombok, Spring Web, Spring Data JPA, MySQL Driver
+import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "PASSENGER_INFO")
+public class PassengerInfo {
+
+	@Id
+	@GeneratedValue
+	private Long pId;
+	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy")
+	private Date travelDate;
+	
+}
+
+
+public class PaymentInfo {
+	
+	@Id
+	@GeneratedValue(generator="uuid2")
+	@GenericGenerator(name="uuid2", strategy="org.hibernate.id.UUIDGenerator")
+	private String paymentId;
+}
+
+
+JpaRepository<ClassName,PrimaryKey>
+public interface PassengerInfoRepository extends JpaRepository<PassengerInfo,Long> {
+
+}
+
+application.properties:
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/pavan
+spring.datasource.username=root
+spring.datasource.password=password
+
+spring.jpa.show-sql=true
+spring.jpa.hibernate.ddl-auto=update -- for auto creation of tables
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+
+server.port=9090
+
+Service:
+@Transactional
+public FlightBookingAck bookFlightTicket(FlightBookingRequest request){
+	
+	PassengerInfo passengerInfo = request.getPassengerInfo();
+	passengerInfoRepository.save(passengerInfo); // persisting to DB
+	
+	PaymentInfo paymentInfo = request.getPaymentInfo();
+	
+	PaymentUtils.validateCreditLimit(paymentInfo.getAccountNo(),passengerInfo.getFare()); //Runtime or unchecked exception
+	
+	paymentInfo.setPassengerId(passengerInfo.getPid());
+	paymentInfo.setAmount(passengerInfo.getFare());
+	
+	paymentInfoRepository.save(paymentInfo);
+	
+	
+	return new FlightBookingAck("SUCCESS", passengerInfo.getFare(), UUID.randomUUID().toString().split("-")[0],passengerInfo);
+	
+}
+
+
+Add @Transactional to the method which does insert/update to multiple tables
+and add @EnableTransactionManagement to application class
+so if any of the db query failed all are rolled back
+
+Ref:
+https://www.youtube.com/watch?v=95kxPSbHzVg
+
+Incase of checked exceptions, 
+previously executed transactions don't get rolled back automatically,
+even if we have used transaction annotation. 
+We need to inform the application how to handle roll back in event of checked exception, 
+This is achieved using the rollbackFor annotation.
+
+@Transactional(rollbackFor=CheckedException.class)
+methodWhichThrowCheckedException() throws CheckedException{}
+
+Ref: 
+https://www.youtube.com/watch?v=WurOjaDRGMQ&list=WL&index=1
+https://www.javainuse.com/spring/boot-rollback
+-------
+@Transactional(readOnly=false, isolation=Isolation.READ_COMMITTED, propagation=Propagation.REQUIRED)
+check abt isolation and propagation
+
+
+what is transaction management
+diff transaction propagation types
+transaction isolation levels
+---------
+
+
+
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
 https://sso.teachable.com/secure/164090/users/sign_up?after_success_url=%2Fsecure%2F164090%2Fcheckout%2F1561785%2F5-day-learning-challenge-get-started-with-spring-and-spring-boot
