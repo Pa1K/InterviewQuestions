@@ -171,3 +171,29 @@ Idempotent
 stream api, complex methods like grouping by
 immutable class
 hashmap customer key object
+-------
+capgemini:
+method overloading
+method overriding
+abstraction
+encapsulation
+singleton class
+why string is immutable
+internal working of hashmap
+
+arraylist vs linkedlist
+hashset vs linkedhashset
+hashmap vs linkedhashmap
+
+comparator vs comparable
+methods used in them
+
+spring mvc flow
+
+@Controller vs @Component
+@Controller vs @RestContoller
+@ReuestMapping
+
+@SpringBootApplication
+
+IOC?
