@@ -38,3 +38,44 @@ functions
 grouping by
 -----
 https://sqlpad.io/sql-interview-questions/
+
+------
+Write a query to return the total movie rental revenue for each month.
+SELECT extract(YEAR FROM payment_ts) as year , extract(MONTH FROM payment_ts) as mon, sum(amount) as rev
+FROM payment
+group by year,mon;
+
+Aggregate functions in SQL:https://www.geeksforgeeks.org/aggregate-functions-in-sql/
+1) Count()
+2) Sum()
+3) Avg()
+4) Min()
+5) Max()
+
+/* Write a query to return the name of the store and its manager, that generated the most sales. */
+SELECT store,manager
+FROM sales_by_store
+order by total_sales desc LIMIT 1;
+
+/*Write a query to find the top 3 film categories that generated the most sales*/
+col_name   | col_type
+-------------+----------
+ category    | text
+ total_sales | numeric
+ 
+SELECT category
+FROM sales_by_film_category order by total_sales desc limit 3;
+
+
+
+/*Write a query to return the titles of the 5 shortest movies by duration*/
+SELECT title
+FROM film order by length
+LIMIT 5;
+by default order by does asecnding order.
+
+
+/* Write a SQL query to return this staff's first name and last name , where picture is NULL */
+SELECT first_name, last_name
+FROM staff
+where picture is NULL;
