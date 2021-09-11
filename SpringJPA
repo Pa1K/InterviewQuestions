@@ -1,0 +1,19 @@
+https://www.baeldung.com/jpa-composite-primary-keys
+
+In JPA, we have two options to define the composite keys: the @IdClass and @EmbeddedId annotations.
+In order to define the composite primary keys, we should follow some rules:
+The composite primary key class must be public.
+It must have a no-arg constructor.
+It must define the equals() and hashCode() methods.
+It must be Serializable.
+
+for entity class:
+@IdClass(AccountId.class)
+@Id
+@Id
+
+
+for key class:
+@Embeddable
+for entity class:
+@EmbeddedId
