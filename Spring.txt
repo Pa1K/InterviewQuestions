@@ -394,7 +394,18 @@ diff transaction propagation types
 transaction isolation levels
 ---------
 
+what is content negotiation?
+consumes={MediaType.APPLICATION_XML_VALUE,MediaType.APPLICATION_JSON_VALUE},
+produces={MediaType.APPLICATION_JSON_VALUE}
 
+What are cross cutting concerns?
+For all cross cutting concerns Spring AOP is solution
+
+How do we implement cross cutting concerns in microservices architecture?
+GATE WAY level
+
+How will you create the custom validators in Spring?
+----
 
 courses:
 https://courses.in28minutes.com/p/spring-boot-for-beginners-in-10-steps
