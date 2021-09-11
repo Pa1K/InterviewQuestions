@@ -1,0 +1,370 @@
+How does basic authentication works in REST API?
+session based
+JWT based
+
+session based or JWT based , JWT based is prefered
+as we may have multiple servers and session is specific to a server
+
+we wll get JWT token once authentication done
+so JWT is for authorisation
+
+
+
+
+Spring security internal workflow
+how spring security from authentication works 
+UsernamePasswordAuthenticationFilter 
+	attemptAuthentication
+	
+
+NoopPasswordEncoder is singleton class available in spring framework
+--------------
+how do you secure your rest api
+How to secure rest api using spring boot
+1. Setup
+2. Web page
+3. Rest service
+4. Default security
+5. Custom security
+
+Actuator for monitoring application
+Devtools for making developement faster
+
+For Jsp support add the following dependency
+org.apache.tomcat.embed
+tomcat-embed-jasper
+provided
+
+Add spring boot starter security as dependency
+
+Auto configuration
+Mapping filter : springSecurityFilterChain to /*
+Default security password:
+Basic authentication is default
+Default user name is user
+
+2 roles
+User, admin
+
+@Configuration
+public class SecurityConfig extends WebSecurityConfigurerAdapter{
+
+//Authentication - user -- roles
+@Override
+protected void configure(AuthenticationManagerBuilder  auth) throws Exception{
+auth.inMemoryAuthentication().withUser("user1").password("secret 1").roles("USER").and().
+								withUser("admin1").password ("secret 1").roles("USER","ADMIN");
+
+}
+
+//Authorisation - role -- access
+protected void configure(HttpSecurity http) throws Exception {
+http.httpBasic().and().authorizeRequests.antMatchers("/students/**").hasRole("USER").
+										 antMatchers("/**").hasRole("ADMIN").and().csrf().disable().headers().frameOptions().disable();
+}
+
+}
+
+
+
+
+how to JWT Authorisation in Spring security from scratch
+https://www.youtube.com/watch?v=X80nJ5T7YpE
+
+Objectives -
+create a new authentication endpoint
+examine every incoming request for valid JWT and authorize
+
+Step 0 -
+A starter Spring Security Application with One hard-coded user
+
+dependencies : web, security
+
+
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
+@EnableWebSecurity
+public class SecurityConfigurer extends WebSecurityConfigurerAdapter{
+
+	@Autowired
+	private MyUserDetailsService myUserDetailsService;
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder  auth) throws Exception{
+		auth.userDetailsService(myUserDetailsService);
+	}
+	
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		return NoOpPasswordEncoder.getInstance();
+	}
+
+}
+
+NoOpPasswordEncoder - don't do any hashing to incoming password
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.core.userdetails.User;
+@Service
+public class MyUserDetailsService implements UserDetailsService {
+
+	@Override
+	public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+		return new User("foo","foo",new ArrayList<>());
+	}
+
+}
+
+
+add the following dependencies to use JWT tokens
+io.jsonwebtoken, jjwt, 0.9.1 - this lets us to create JWTs and validate JWTs
+javax.xml.bind, jaxb-api, 2.3.0 - this need to be added if we are using java 9 or more, removed from JDK for modularity purpose
+
+
+public class JwtUtil {
+	
+	private String SECRET_KEY = "secret";
+	
+	public String generateToken(UserDetails userDetails){
+		Map<String, Object> claims = new HashMap<>();
+		return createToken(claims, userDetails.getUserName());
+	}
+	
+	public createToken(Map<String, Object> claims, String subject){
+		return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
+				.setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+				.signWith(SignatureAlgorithm.HS256, SECRET_KEY).compact();
+	}
+	
+	
+	public Boolean validateToken(String token, UserDetails userDetails) {
+		final String username = extractUsername(token);
+		return (username.equals(userDetails.getUserName()) && !isTokenExpired(token));
+	}
+	
+	public String extractUsername(String token){
+		return extractClaim(token,Claims::getSubject);
+	}
+	
+	private Boolean isTokenExpired(String token) {
+		return extractExpiration(token).before(new Date());
+	}
+	
+	public Date extractExpiration(String token) {
+		return extractClaim(token,Claims::getExpiration);
+	}
+	
+	public <T> T extractClaim(String token, Function<Claims, T> claimsResolver) {
+		final Claims claims = extractAllClaims(token);
+		return claimsResolver.apply(claims);
+	}
+	
+	private Claims extractAllClaims(String token){
+		return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+	}
+	
+}
+
+
+Step 1 -
+A /authenticate API endpoint 
+- Accepts user ID and password
+- Returns JWT as response
+
+public class AuthenticationRequest {
+	private String username;
+	private String password;
+	
+	// getter and setters
+	
+	// constructor taking username, password as args
+	
+	// default constructor
+}
+
+public class authenticationResponse {
+	private final Sting jwt;
+	
+	// getter for jwt
+	
+	// constructor taking jwt as arg
+}
+
+
+
+@RestController
+public class HelloResource {
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+	
+	@Autowired
+	private MyUserDetailsService userDetailsService;
+	
+	@Autowired
+	private JwtUtil jwtUtil;
+	
+	@RequestMapping("/hello")
+	public String hello(){ return "Hello World"; }
+	
+	@RequestMapping("/authenticate",method=RequestMethod.POST)
+	public ResponseEntity<?> createAuthenticateToken(@RequestBody AuthenticateRequest authenticateRequest) throws Exception {
+		try {
+		authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(authenticateRequest.getUserName(), authenticateRequest.getPassword())
+				);
+		}
+		catch (BadCredentialsException e) {
+			throw new Exception("Incorrect username or password",e);
+		}
+		
+		final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticateRequest.getUserName());
+		
+		final String jwt = jwtUtil.generateToken(userDetails);
+		
+		return ResponseEntity.ok(new AuthenticateResponse(jwt));
+	}
+}
+
+
+we need to inform spring security to bypass authentication if some calls authenticate endpoint
+
+add the following in SecurityConfigurer class,
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+	http.csrf().disable()
+		.authorizeRequests().antMatchers("/authenticate").permitAll()
+		.anyRequest().authenticated();
+}
+
+Run the application, we will get the following
+Action:
+Consider defining a bean of type 'org.springframework.security.authentication.AuthenticationManager' in your configuration.
+
+	@Autowired
+	private AuthenticationManager authenticationManager;
+this used to work in old versions of spring boot,
+spring boot 2.0 we need to define a bean for AuthenticationManager
+
+add the following in SecurityConfigurer class,
+@Override
+@Bean
+public AuthenticationManager authenticateManagerBean() throws Exception {
+	return super.authenticateManagerBean();
+}
+
+from POSTMAN:
+POST http://localhost:8080/authenticate
+HEADERS Content-Type : application/json
+Body {"username":"foo", "password":"foo"}
+response jwt token generated
+
+GET http://localhost:8080/hello
+HEADERS 
+Content-Type : application/json
+Authorization : Bearer jwtToken
+
+Getting 403
+
+Step 2 -
+Intercept all incoming requests
+- Extract JWT from the header
+- Validate and set in execution context
+
+Intercept all incoming requests
+for this we need filters, there are diff filters available
+
+import org.springframework.web.filter.OncePerRequestFilter;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.FilterChain;
+import javax.Server.ServletException;
+import java.io.IOException;
+
+@Component
+public class JwtRequestFilter extends OncePerRequestFilter {
+
+	@Autowired
+	private MyUserDetailsService userDetailsService;
+	
+	@Autowired
+	private JwtUtil jwtUtil;
+	
+	@Override
+	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain) throws ServletException, IOException {
+		
+		final String authorizationHeader = request.getHeader("Authorization");
+		
+		String username = null;
+		String password = null;
+		
+		if (authorizationHeader!=null && authorizationHeader.startsWith("Bearer ")) {
+			jwt = authorizationHeader.subString(7);
+			username = jwtUtil.extractUsername(jwt);
+		}
+		
+		if(username!=null && SecurityContextHolder.getContext().getAuthentication() == null){
+			UserDetails userDetails = this.userDetailsService.loadUserByUsername(username);
+			
+			if(jwtUtil.validateToken(jwt,userdetails)){
+				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
+							userDetails, null, userDetails.getAuthorities());
+				usernamePasswordAuthenticationToken.setDetails(
+							new WebAuthenticationDetailsSource().buildDetails(request));
+				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);		
+				
+			} 
+		}
+		
+		chain.doFilter(request,response);
+	}
+}
+
+
+now we created filter chain, we need to use it.
+
+
+@Override
+protected void configure(HttpSecurity http) throws Exception {
+	http.csrf().disable()
+		.authorizeRequests().antMatchers("/authenticate").permitAll()
+		.anyRequest().authenticated()
+		.and().sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		
+	http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class); // means call jwtRequestFilter before calling UsernamePasswordAuthenticationFilter
+}
+
+	.and().sessionManagement()
+		.sessionCreationPolicy(SessionCreationPolicy.STATELESS); 
+	means don't do session mangement 
+	
+	
+Questions -
+WebSecurityConfigurerAdapter
+AuthenticationManagerBuilder
+inMemoryAuthentication()
+HttpSecurity
+	
+@EnableWebSecurity vs @Configuration
+UserDetailsService
+loadUserByUsername
+UserDetails
+User
+setClaims, wt's claims
+Function<Claims, T> claimsResolver
+ResponseEntity<?>
+AuthenticationManager
+authenticate
+UsernamePasswordAuthenticationToken
+ResponseEntity.ok(new AuthenticateResponse(jwt))
+OncePerRequestFilter
+doFilterInternal
+SecurityContextHolder.getContext().getAuthentication()
+userDetails.getAuthorities()
+WebAuthenticationDetailsSource
+chain.doFilter(request,response);
+UsernamePasswordAuthenticationFilter
