@@ -16,7 +16,7 @@
 16. Predicate,  supplier  , consumer and function
 17. What is flat map
 ---------
-we can pass single character to as int argument
+we can pass single character to as int argument, and if print we wll get ascii value
 ----
 #inheritance
 Parent parent = new Child();
