@@ -1,3 +1,9 @@
+CrudRepository
+PagingAndSortingRepository
+JpaRepository
+
+fetching the relevant data from an entity table based on offsets -- PagingAndSortingRepository
+-------------------
 https://www.baeldung.com/jpa-composite-primary-keys
 
 In JPA, we have two options to define the composite keys: the @IdClass and @EmbeddedId annotations.
