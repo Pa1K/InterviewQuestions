@@ -37,3 +37,5 @@ the inserts into a batch insert statement.
 ------
 which of the following is used for joining tables in collection mapping?
 @JoinTable or @JoinCoumns
+-------
+https://www.tutorialspoint.com/hibernate/hibernate_caching.htm
