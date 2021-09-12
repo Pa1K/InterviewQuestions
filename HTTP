@@ -1,3 +1,19 @@
+JAX RS - Java API for RESTful WebServices
+
+annonate method with @Path to get the relative path if the resource class/method
+
+@MatrixParam, 
+@CookieParam 
+@FormParam
+@DefaultValue
+
+@Context
+
+-------
+URI in RESTful web service 
+<protocol>://<service-name>/<ResourceType>/<ResourceID>
+https://www.tutorialspoint.com/restful/restful_addressing.htm
+------
 HTTP METHODS:
 GET - read - fetch data from the server
 POST - create
@@ -69,6 +85,9 @@ HTTP Status Codes:
 400 - Bad Request
 401 - unauthorised
 404 - not found
+409 Conflict
+The HTTP 409 Conflict response status code indicates a request conflict with current state of the target resource.
+
 500 - internal server error
 
 https://www.instantwebtools.net/fake-rest-api
