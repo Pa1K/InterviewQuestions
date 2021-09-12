@@ -16,6 +16,16 @@
 16. Predicate,  supplier  , consumer and function
 17. What is flat map
 ---------
+can a class be private
+
+We can not declare top level class as private. 
+Java allows only public and default modifier for top level classes in java.
+Inner classes can be private.
+
+if we add private to class, we will get the following compile error
+Illegal modifier for the class PrivateClass; only public, abstract & final are permitted
+
+-------
 we can pass single character to as int argument, and if print we wll get ascii value
 ----
 #inheritance
