@@ -57,3 +57,9 @@ which of the following is used for joining tables in collection mapping?
 @JoinTable or @JoinCoumns
 -------
 https://www.tutorialspoint.com/hibernate/hibernate_caching.htm
+------
+  HIBERNATE
+#Hibernate and JPA Contextual Sessions
+What is addScalar() used for in the following Hibernate code?
+Double max = (Double) sess.createSQLQuery("select max(b.weight) as maxWeight from books b").addScalar("maxWeight",HIBERNATE.DOUBLE).uniqueResult();
+-------
