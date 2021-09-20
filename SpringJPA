@@ -12,6 +12,7 @@ DataAccessException extends NestedRuntimeException i.e DataAccessExceptions are 
 Spring JDBC takes care of DataAccessException
 Spring JPA or other DB frameworks have to use @Repository over DAO classes, for DataAccessException
 
+https://github.com/Pa1K/RepositoryAnnotation/tree/master/RepositoryAnnonation
 https://www.youtube.com/watch?v=CUQWZHjuq-w
 
 In your DAO methods, you neither need to surround the code with a try/catch block nor declare throwing an exception in the method signature - true
