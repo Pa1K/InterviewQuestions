@@ -4,6 +4,19 @@ JpaRepository
 
 fetching the relevant data from an entity table based on offsets -- PagingAndSortingRepository
 -------------------
+@Repository preference over @Component,@Service for DAO classes
+What will happen if you use @Service over a Dao/Repository?
+
+Root Exception class for all dao specific exception in spring is DataAccessException
+DataAccessException extends NestedRuntimeException i.e DataAccessExceptions are unchecked exceptions(Runtime Exceptions)
+Spring JDBC takes care of DataAccessException
+Spring JPA or other DB frameworks have to use @Repository over DAO classes, for DataAccessException
+
+https://www.youtube.com/watch?v=CUQWZHjuq-w
+
+In your DAO methods, you neither need to surround the code with a try/catch block nor declare throwing an exception in the method signature - true
+This is because DataAccessException (and therefore its subclasses, including DuplicateKeyException) is an unchecked exception that you are not forced to catch.
+--------------
 https://www.baeldung.com/jpa-composite-primary-keys
 
 In JPA, we have two options to define the composite keys: the @IdClass and @EmbeddedId annotations.
