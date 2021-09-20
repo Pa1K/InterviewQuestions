@@ -18,6 +18,10 @@ https://www.youtube.com/watch?v=CUQWZHjuq-w
 In your DAO methods, you neither need to surround the code with a try/catch block nor declare throwing an exception in the method signature - true
 This is because DataAccessException (and therefore its subclasses, including DuplicateKeyException) is an unchecked exception that you are not forced to catch.
 --------------
+Each entity class to be persisted by an ORM framework, a default constructor with no argument is required. - true
+For each entity class, you must define an identifier property to uniquely identify an entity.
+https://docs.oracle.com/javaee/6/tutorial/doc/bnbqa.html#bnbqb
+----------
 https://www.baeldung.com/jpa-composite-primary-keys
 
 In JPA, we have two options to define the composite keys: the @IdClass and @EmbeddedId annotations.
