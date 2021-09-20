@@ -63,3 +63,16 @@ https://www.tutorialspoint.com/hibernate/hibernate_caching.htm
 What is addScalar() used for in the following Hibernate code?
 Double max = (Double) sess.createSQLQuery("select max(b.weight) as maxWeight from books b").addScalar("maxWeight",HIBERNATE.DOUBLE).uniqueResult();
 -------
+In hibernate, which of the following exceptions will be thrown by the following code:
+@Id
+@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="StudentSeq")
+@Column(name="admission_no", updatable = false, nullable = false)
+private Long admission_no;
+1. org.hibernate.AnnotationException: Unknown Id.generator
+2. QuerySyntaxException: Table is not mapped
+3. OptimisticLockException
+4. LazyInitializationException
+
+Ans: 1. org.hibernate.AnnotationException: Unknown Id.generator
+https://www.overops.com/blog/5-common-hibernate-exceptions-and-how-to-fix-them/
+-----------------
