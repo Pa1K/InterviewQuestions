@@ -636,7 +636,31 @@ https://howtodoinjava.com/java/collections/arraylist/remove-duplicate-elements/
 https://howtodoinjava.com/java8/java-stream-distinct-examples/
 -----
 
-Optional class - yet to read
+Optional class - 
+To create an empty Optional object, we simply need to use its empty() static method:
+Optional<String> empty = Optional.empty();
+
+Optional object with the static method of():
+String name = "baeldung";
+Optional<String> opt = Optional.of(name);
+However, the argument passed to the of() method can't be null. Otherwise, we'll get a NullPointerException:
+
+in case we expect some null values, we can use the ofNullable() method:
+Optional<String> opt = Optional.ofNullable(name);
+if we pass in a null reference, it doesn't throw an exception but rather returns an empty Optional object.
+
+empty.isPresent()
+opt.isEmpty()
+
+Optional<String> opt = Optional.of("baeldung");
+opt.ifPresent(name -> System.out.println(name.length()));
+
+String nullName = null;
+String name = Optional.ofNullable(nullName).orElse("john");
+
+String nullName = null;
+String name = Optional.ofNullable(nullName).orElseGet(() -> "john");
+
 https://www.baeldung.com/java-optional
 https://www.oracle.com/technical-resources/articles/java/java8-optional.html
 https://www.geeksforgeeks.org/java-8-optional-class/#:~:text=Java%208%20has%20introduced%20a,or%20alternate%20code%20to%20run.
