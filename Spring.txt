@@ -211,6 +211,8 @@ What're uses of @Qualifer?
 
 application.properties:
 datetoprocess=20110810
+my.list.values=one,two,three
+dbValues={connectionString:'https://',userName:'foo',password:'pass'}
 
 @Value("${datetoprocess}")
 private int dateToProcess;
@@ -221,6 +223,26 @@ datetoprocess is key
 
 java -jar  spring-boot-jar-generated-from-our-code.jar
 if we another application.properties file in the same location of jar, then external file takes precendence over internal file
+
+java -jar  spring-boot-jar-generated-from-our-code.jar -Dkey=value
+
+@Value("this value is assigned to the variable declared below")
+private String key;
+i.e key = this value is assigned to the variable declared below
+
+@Value("${datetoprocess: default value}")
+private String key;
+key = default value if there is no key with name datetoprocess
+
+@Value("${my.list.values}")
+private List<String> listValues;
+listValues=[one,two,three]
+listValues.get(0)=one
+
+@Value("#{${dbValues}}")
+private Map<String,String> dbValues;
+
+https://www.youtube.com/watch?v=NFQDqEhx2e0
 -------
 Spring Boot Global Excetion Handling -
 https://www.youtube.com/watch?v=hLlGAQ5NfTE
