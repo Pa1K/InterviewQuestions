@@ -208,8 +208,13 @@ What're diff ways to inject a bean by not using @Autowired?
 
 What're uses of @Qualifer?
 -----------
-	@Value("${datetoprocess}")
-	private int dateToProcess;
+
+application.properties:
+datetoprocess=20110810
+
+@Value("${datetoprocess}")
+private int dateToProcess;
+
 we pick value of dateToProcess from application.properties or Vm arguments, if both mentioned Vm args takes precedence over application.properties
 
 datetoprocess is key
