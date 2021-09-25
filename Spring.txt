@@ -85,6 +85,14 @@ if don't want to use the ComponentScan follow package structure
 basepackage is where main method present
 for remaining follow basepackage.controller/service like that so no need to mention ComponentScan
 ---------------------
+@Bean
+is bean is used over class/method
+where @Bean is used
+@Bean is a method-level annotation and a direct analog of the XML <bean/> element. 
+The annotation supports most of the attributes offered by <bean/> such as init-method, destroy-method, autowiring, lazy-init, dependency-check, depends-on and scope.
+https://dzone.com/articles/playing-sround-with-spring-bean-configuration
+https://docs.spring.io/spring-javaconfig/docs/1.0.0.m3/reference/html/creating-bean-definitions.html
+----------
 3. diff b.w component and service annotation
 
 @Component  - marks java class as bean
