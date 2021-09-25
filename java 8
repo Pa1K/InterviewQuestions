@@ -21,6 +21,8 @@ Diamond operator in Collection and Generic instance creation - Generics are used
 Handling multiple exceptions with a single catch block
 Try with resources block - Automatic Resource Management (ARM).
 ---------
+https://www.javatpoint.com/difference-between-comparable-and-comparator
+-------------
 8.22 Interface in Java 8 Default , Static Methods | New features
 
 Default Methods -
