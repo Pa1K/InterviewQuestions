@@ -18,10 +18,10 @@ Ref: https://sqlpad.io/sql-playground/
 -------------
 
 Diff joins in SQL -
-inner join
+inner join - join, inner join are same
 left join
 right join
-full join
+full join - FULL OUTER JOIN and FULL JOIN are the same.
 
 indexing
 performance tuning
