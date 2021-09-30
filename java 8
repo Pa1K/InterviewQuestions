@@ -320,6 +320,8 @@ https://www.youtube.com/watch?v=7-ALyd6OAaQ&list=PLyHJZXNdCXsdeusn4OM33415DCMQ6s
 ----------
 Stream:
 
+https://javaconceptoftheday.com/collections-and-streams-in-java/
+
 Streams vs Collections:
 - A collection is simply an in-memory data structure that holds all the data, 
 whereas Streams are data structures whose elements are computed only when there is a demand.
