@@ -37,6 +37,8 @@ https://www.javatpoint.com/difference-between-stringbuffer-and-stringbuilder
 Java Stack and Heap: Java Memory Allocation Tutorial
 https://www.guru99.com/java-stack-heap.html
 If reference is not presnet for the object then it's available for garbage collection.
+
+https://stackoverflow.com/questions/18406703/when-will-a-string-be-garbage-collected-in-java
 ---------
 can a class be private?
 
