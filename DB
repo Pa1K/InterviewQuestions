@@ -30,7 +30,10 @@ left join
 right join
 full join - FULL OUTER JOIN and FULL JOIN are the same.
 -------
-
+If we drop a table, does it also drop related objects like constraints, indexes, columns, default, views and stored procedures?
+SQL server drops all related objects, which exists inside a table like constraints, indexes, columns, defaults etc..
+But dropping a table will not drop views and stored procedures as they exist outside the table
+---------
 indexing -
 what are indexes and how to create an index in SQL?
 indexes are database objects which help in retrieving records quickly and more efficiently.
