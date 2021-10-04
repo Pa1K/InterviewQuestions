@@ -1,3 +1,10 @@
+Third highest
+select * from payment order by amount desc offset 2 limit 1;
+select MAX(salary) from emp_table; gives highest salary
+select MAX(salary) from emp_table where salary < (select MAX(salary) from emp_table); gives 2nd highest salary
+but better approach is
+select salary from emp_table order by salary desc offset 2 limit 1; gives third highest salary
+
 equi join
 https://www.dotnettricks.com/learn/sqlserver/difference-between-inner-join-and-equi-join-and-natural-join
 https://www.educative.io/edpresso/what-is-an-equi-join-in-sql
@@ -22,12 +29,39 @@ inner join - join, inner join are same
 left join
 right join
 full join - FULL OUTER JOIN and FULL JOIN are the same.
+-------
 
-indexing
+indexing -
+what are indexes and how to create an index in SQL?
+indexes are database objects which help in retrieving records quickly and more efficiently.
+column indexes can be created on both tables and views.
+by declaring a column as an index within a table/view, the user can access those records quickly by executing the index.
+Indexes with more than one column are called clustered indexes.
+
+Syntax:
+CREATE INDEX INDEX_NAME ON TABLE_NAME(COL1,COL2);
+
+DROP INDEX INDEX_NAME on TABLE_NAME;
+
+Indexes are known to improve the efficiency of SQL Select Queries with where clause
+
+How do these indexes work?
+in general, full table scan if there is no index.
+An index is a data structure that stores the values for a certain specific column of a table and helps us avoid a full table scan
+Database Indexing in reality, allows us to cut down the number of rows/records that need to be examined when a select query with a where clause is executed.
+
+Few DS used in index are:
+B-tree - commonly used DS for indexes as they are time-efficient for lookups, deletions and insertions.
+All these operations can be done in logarithmic time. Data that is stored inside of a B-tree can be sorted.
+Hash tables
+
+Disadvantages of indexes -
+additional space, so the larger the table, the bigger the index
+every time we perform an add, delete, or update operation, the same operation will need to be performed on the index as well
+---------
 performance tuning
 if there are 1lakh records, how will u fetch efficienyly
 how do we know whether query is efficient or not
-how to find employee with 4th highest salary
 
 
 diff objects in DB like tables
