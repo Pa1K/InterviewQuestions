@@ -39,6 +39,61 @@ https://www.guru99.com/java-stack-heap.html
 If reference is not presnet for the object then it's available for garbage collection.
 
 https://stackoverflow.com/questions/18406703/when-will-a-string-be-garbage-collected-in-java
+
+JVM vs JDK vs JRE
+where in ur file system does java compiler i.e javac exists? Is there any physical existence? - at jdk/bin/, javac is present 
+Class Loader and its types
+What are defined class paths for different class loaders
+Class loader belong to JRE or JDK - belongs to JRE
+What is byte code verifier - byte code verifier verifies byte code is proper or corrputed
+What is method or class area - class strcture is maintained here
+What is heap, stack - heap for objects and stack for class variables
+Why PC registers are imp and wt it holds? - pc registers contain address of JVM current instruction
+What is native method stack - for native methods 
+What is JIT, why JIT -   as Interpreter takes times, JIT introduced to increase efficiency, converts set of repeated lines to machine code 
+What is execution engine? and what are its Components? - to execute machine code, JIT,Interpreter,GC
+What is exception proprgration stack. How stack is used during exception propagation?
+Show exception propagation stack via Code Example
+
+JavaCode --> compiler(javac) converts Java file/Code to --> class file / byte code
+JDK =  JVM + JRE
+JRE contains JVM
+JVM contains execution engines
+
+ClassLoader is part of JRE 
+ClassLoaders - to load .class file into the main memory 
+before loading to Main memory, byte code verifier verifies byte code is proper or corrputed.
+ClassLoaders -
+1. Bootstrap ClassLoader - jre/lib/rt.jar
+2. Extension  ClassLoader - JAVA_HOME/lib/ext
+3. System/Application ClassLoader - our classpath
+if class is not present in all 3 of ClassLoaders then we get ClassNotFoundException.
+
+JVM is platform dependent
+JVM/Main memory -
+1. class/method area
+2. heap
+3. stack
+4. pc registers
+5. native memory 
+
+pc registers contain address of JVM current instruction
+
+Excecution Engine - to execute machine code
+1. JIT(Just-InTime Compiler) - as Interpreter takes times, JIT introduced to increase efficiency, converts set of repeated lines to machine code 
+2. Interpreter - reads byte code line by line and converts to machine code 
+3. GC - always runs on heap memory, cleans up heap memory
+
+
+Exception Propagation -
+An exception is first thrown from the top of the stack and if it is not caught, it drops down the call stack to the previous method,
+If not caught here, the exception again drops down to the previous method, 
+and so on until they are caught or until they reach the very bottom of the call stack.
+This is called exception propagation.
+
+
+Ref:
+https://www.youtube.com/watch?v=ZI6Et1bVen0
 ---------
 can a class be private?
 
