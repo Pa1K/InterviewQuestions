@@ -1,0 +1,3 @@
+transitive dependency?
+Transitive dependency means that if A depends on B and B depends on C, then A depends on both B and C.
+https://howtodoinjava.com/maven/maven-dependency-management/
