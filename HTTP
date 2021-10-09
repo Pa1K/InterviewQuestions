@@ -1,5 +1,8 @@
 JAX RS - Java API for RESTful WebServices
 
+disadvantages of REST API
+https://www.journaldev.com/9193/web-services-interview-questions-soap-restful#what-is-web-service
+
 annonate method with @Path to get the relative path if the resource class/method
 
 @MatrixParam, 
