@@ -49,6 +49,14 @@ It must have a no-arg constructor.
 It must define the equals() and hashCode() methods.
 It must be Serializable.
 
+Caused by: org.hibernate.MappingException: Composite-id class must implement Serializable: com.pavan.relations.model.Account
+added @IdClass(value = AccountId.class) on top of Account class
+
+Caused by: org.hibernate.MappingException: Composite-id class must implement Serializable: com.pavan.relations.model.primary.AccountId
+public class AccountId implements Serializable
+resolve issue
+
+
 for entity class:
 @IdClass(AccountId.class)
 @Id
@@ -60,6 +68,30 @@ for key class:
 for entity class:
 @EmbeddedId
 ------
+OneToOne mapping -
+
+private Address address;
+Caused by: org.hibernate.MappingException: Could not determine type for: com.pavan.relations.model.Address, at table: users, 
+for columns: [org.hibernate.mapping.Column(address)]
+@OneToOne private Address address;
+resolves exception and address_id Column gets created in DB
+
+Caused by: org.hibernate.TransientPropertyValueException: 
+object references an unsaved transient instance - save the transient instance before flushing : 
+com.pavan.relations.model.User.address -> com.pavan.relations.model.Address
+
+By adding cascade = CascadeType.ALL to @OneToOne we can resolve the issue
+
+User -
+@OneToOne(cascade = CascadeType.ALL)
+@JoinColumn(name = "address_id", referencedColumnName = "id")
+private Address address;
+
+Address -
+@OneToOne(mappedBy = "address")
+private User user;
+
+-------
 hibernate.jdbc.fetch_size vs hibernate.jdbc.batch_size
 Both of these options set properties within the JDBC driver. 
 In the first case, 
