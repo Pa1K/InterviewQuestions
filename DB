@@ -141,6 +141,15 @@ END AS QuantityText
 FROM OrderDetails;
 we will get three columns ... OrderID, Quantity, QuantityText
 
+SELECT LANGUAGE_NAME, RATING_CODE AS RATING, 
+CASE RATING_CODE
+WHEN '3' THEN 'DIFFICULT'
+WHEN '2' THEN 'FAIRLY DIFFICULT'
+WHEN '1' THEN 'EASY'
+ELSE 'UNKNOWN'
+END AS RATING_DESCRIPTION
+FROM PROGRAMMING_LANGUAGES;
+
 The following SQL will order the customers by City. However, if City is NULL, then order by Country:
 SELECT CustomerName, City, Country
 FROM Customers
@@ -150,6 +159,13 @@ ORDER BY
     ELSE City
 END);
 
+SELECT FirstName, Age, City FROM Students
+ORDER BY (
+CASE
+WHEN Age BETWEEN 15 AND 18 THEN City
+ELSE Age
+END
+);
 
 
 
