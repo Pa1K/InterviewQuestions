@@ -3,6 +3,24 @@ PagingAndSortingRepository
 JpaRepository
 
 fetching the relevant data from an entity table based on offsets -- PagingAndSortingRepository
+
+---------
+CrudRepository -
+<S extends T> S save(S entity);
+<S extends T> Iterable<S> saveAll(Iterable<S> entities);
+
+void delete(T entity);
+void deleteById(ID id);
+void deleteAllById(Iterable<? extends ID> ids);
+void deleteAll(Iterable<? extends T> entities);
+void deleteAll();
+
+boolean existsById(ID id);
+Optional<T> findById(ID id);
+Iterable<T> findAll();
+Iterable<T> findAllById(Iterable<ID> ids);
+
+long count();
 -------------------
 @Repository preference over @Component,@Service for DAO classes
 What will happen if you use @Service over a Dao/Repository?
