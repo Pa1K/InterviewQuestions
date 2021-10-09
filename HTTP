@@ -1,7 +1,28 @@
 JAX RS - Java API for RESTful WebServices
 
+------
+WebSocket vs WebServies
+one stark difference between WebSocket and HTTP is that 
+WebSocket works on a persistent TCP connection while HTTP creates a new TCP connection for every request.
+as part of HTTP/1.1, persistent connections were introduced to alleviate this shortcoming of HTTP.
+
+With WebSocket, working over persistent TCP communication, it's possible for server and client both to send data independent of each other, 
+and in fact, to many communicating parties! This is referred to as bi-directional communication.
+
+For the bulk of the scenario 
+where occasional communication is required with the server like getting the record of an employee, it's still sensible to use REST service over HTTP/S. 
+But for newer client-side applications like a stock-price application which requires real-time updates from the server, it's much convenient to leverage WebSocket.
+
+WebSocket is more suitable for cases where a push-based and real-time communication defines the requirement more appropriately. 
+Additionally, WebSocket works well for scenarios where a message needs to be pushed to multiple clients simultaneously.
+
+Ref:
+https://www.baeldung.com/rest-vs-websockets
+-------
 disadvantages of REST API
 https://www.journaldev.com/9193/web-services-interview-questions-soap-restful#what-is-web-service
+-----------
+
 
 annonate method with @Path to get the relative path if the resource class/method
 
