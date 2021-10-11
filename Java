@@ -33,6 +33,11 @@ Ref: https://www.youtube.com/watch?v=yxf2spbpTSw&ab_channel=in28minutesCloud%2CD
 ---------
 String vs StringBuilder vs StringBuffer
 https://www.javatpoint.com/difference-between-stringbuffer-and-stringbuilder
+
+to split the string based on multiple delims then use regex pattern
+String delims = "[ !,?._'@]+";
+String[] tokens = str.split(delims);
+        
 ---------
 Java Stack and Heap: Java Memory Allocation Tutorial
 https://www.guru99.com/java-stack-heap.html
