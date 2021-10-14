@@ -28,6 +28,19 @@ GET - Requests informatin from a specific source
 DELETE - Removes info
 HEADER - Previews what the GET request response might be without the body of the text
 OPTIONS - learns the communication channels used by the target source
+
+HTTP METHODS:
+GET - read - fetch data from the server
+POST - create
+PUT - update/modify entire record
+PATCH - to update/modify part of the record 
+DELETE - delete
+
+POST /users/ @RequestBody
+GET /users/{id}
+GET /users
+DELETE /users/{id}
+
 ---------
 
 annonate method with @Path to get the relative path if the resource class/method
@@ -43,16 +56,6 @@ annonate method with @Path to get the relative path if the resource class/method
 URI in RESTful web service 
 <protocol>://<service-name>/<ResourceType>/<ResourceID>
 https://www.tutorialspoint.com/restful/restful_addressing.htm
-------
-HTTP METHODS:
-GET - read - fetch data from the server
-POST - create
-PUT - update/modify entire record
-PATCH - to update/modify part of the record 
-DELETE - delete
-
-GET /users/{id}
-
 ---------
 idempotent?
 https://restfulapi.net/idempotent-rest-apis/
