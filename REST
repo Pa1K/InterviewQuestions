@@ -42,7 +42,8 @@ GET /users
 DELETE /users/{id}
 
 ---------
-
+https://restfulapi.net/resource-naming/
+-----
 annonate method with @Path to get the relative path if the resource class/method
 
 @MatrixParam, 
