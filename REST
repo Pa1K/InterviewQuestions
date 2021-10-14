@@ -41,6 +41,10 @@ GET /users/{id}
 GET /users
 DELETE /users/{id}
 
+get all the forked repos that user ada, and in the order of when they were created (recent first)
+three parameters - type, sort, and direction
+/users/ada/repos?type=forked&sort=created
+
 ---------
 https://restfulapi.net/resource-naming/
 -----
