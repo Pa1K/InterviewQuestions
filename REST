@@ -22,7 +22,13 @@ https://www.baeldung.com/rest-vs-websockets
 disadvantages of REST API
 https://www.journaldev.com/9193/web-services-interview-questions-soap-restful#what-is-web-service
 -----------
-
+POST - sends data to specific server to create or update information
+PUT - sends data to speicifc server to create or update information without the risk of creating the resource more than once
+GET - Requests informatin from a specific source
+DELETE - Removes info
+HEADER - Previews what the GET request response might be without the body of the text
+OPTIONS - learns the communication channels used by the target source
+---------
 
 annonate method with @Path to get the relative path if the resource class/method
 
