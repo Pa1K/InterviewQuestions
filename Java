@@ -100,6 +100,10 @@ This is called exception propagation.
 Ref:
 https://www.youtube.com/watch?v=ZI6Et1bVen0
 ---------
+https://docs.oracle.com/javase/6/docs/api/java/util/regex/Pattern.html
+Pattern.compile helps to find whether regex valid or not
+if pattern is not valid we will get PatternSyntaxException.
+---------
 can a class be private?
 
 We can not declare top level class as private. 
