@@ -171,6 +171,7 @@ the transient keyword is used during serialization of Java object
 
 Ref:
 https://javarevisited.blogspot.com/2011/09/transient-keyword-variable-in-java.html#axzz75arPQxam
+https://www.geeksforgeeks.org/transient-keyword-java/
 -------------
 Marker Interface:
 https://javaconceptoftheday.com/marker-interface-java/
@@ -205,9 +206,6 @@ what are marker interfaces in java and what marker interface mean?
 a marker interface has no data member and method
 It is used to “mark” java classes so that objects of these classes may get certain capability. 
 Other examples of marker interfaces are:- Cloneable and Remote.
-
-transient keyword?
-https://www.geeksforgeeks.org/transient-keyword-java/
 -----------
 By design, 
 all the collection classes in java.util package are fail fast
