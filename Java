@@ -221,6 +221,162 @@ below are the concurrent classes introduced in java 5 within java.util.concurren
 4. ConcurrentHashMap
 5. BlockingQueue
 ----------
+Collection
+	List
+	Queue
+	Set
+
+Map - doesn't extend Collection interface
+
+
+List -
+Contains ordered elements
+allows duplicates
+supports index-baseed search, random access  but elements can be easily inserted irrespective of the position.
+add elements in order if size is not specified, else we may get Exception in thread "main" java.lang.IndexOutOfBoundsException: Index: 4, Size: 3
+
+java.util.Set:
+Doesn’t define an order for the elements hence index-based search is not supported
+Doesn’t contain duplicates
+
+java.util.Queue
+follows a FIFO approach
+Elements adds at rear end and removes from the front end.
+
+
+java.util.Map
+Represents a key, value pair
+ Map interface does not implement the Collection.
+It can only contain a unique key
+can have duplicate values
+
+
+List Interface -
+ArrayList 
+LinkedList 
+Vector
+Stack extends Vector 
+
+ArrayList -
+ArrayList internally uses a dynamic array to store the elements.
+Dynamic resizing 
+increases by 50% of original size
+non synchronised
+ArrayList maintains the insertion order i.e order of the object in which they are inserted.
+Manipulation with ArrayList is slow because it internally uses an array. If any element is removed from the array, all the bits are shifted in memory.
+ArrayList is better for storing and accessing data.
+
+LinkedList -
+implements List, Deque 
+LinkedList internally uses a doubly linked list to store the elements.
+maintains insertion order
+non synchronised
+doesn't support accessing elements randomly
+can use ListIterator to iterate LinkedList elements
+Manipulation with LinkedList is faster than ArrayList because it uses a doubly linked list, so no bit shifting is required in memory.
+LinkedList is better for manipulating data.
+
+LinkedList is fast for adding and deleting elements, but slow to access a specific element. 
+ArrayList is fast for accessing a specific element but can be slow to add to either end, and especially slow to delete in the middle.
+
+Vector -
+synchronised, so thread safe
+maintains insertion order
+increases it's size by doubling the array size
+legacy class
+
+Stack -
+last in first out
+the elements are added as well as removed from the rear end 
+
+
+Set -
+	HashSet implements Set 
+	LinkedHashSet implements Set 
+	SortedSet extends Set
+		TreeSet implements SortedSet
+	
+
+
+HashSet -
+implements Set interface
+implicitly implements a hashtable
+HashSet is an unordered collection and doesn't maintain any order.
+duplicate elements are not allowed in Hashset.
+only one null is allowed
+
+LinkedHashSet -
+ordered version of HashSet, which maintains double linked list across all elements
+maintains insertion order
+
+SortedSet -
+All elements of SortedSet must implement the Comparable interface
+it's a set sorted in an ascending order
+
+TreeSet -
+Uses Tree for storage (self balancing binary search tree like Red-Black tree)
+Objects in TreeSet are stored in a sorted and ascending order
+
+
+Queue -
+	PriorityQueue implements Queue
+	DeQue extends Queue 
+		ArrayDeQue implements DeQue
+
+PriorityQueue -	
+PriorityQueue is  a queue with priority asscoiated with each element
+high priority element is served before a low priority element irrespective of their insertion order
+
+DeQue -
+DeQue refers to Double Ended Queue
+Elements can be added and removed from either end
+
+ArrayDeQue -
+way to apply resizable-array in addition to the implementation of the Deque Interface
+no capacity restricitions
+
+
+Map -
+	HashMap implements Map
+	Hashtable implements Map
+	SortedMap extends Map
+		TreeMap implements SortedMap
+
+HashMap -
+non-synchronised
+allows only one null key but multiple null values
+
+Hashtable -
+synchronised
+Doesn't allow any null key or value
+
+SortedMap -
+entries are maintained in an ascending key order 
+
+TreeMap -
+implicitly implements the Red-Black Tree implementation
+can't store any null key
+
+
+Why Map doesn't extend Collection interface?
+Map follows Key-Value where as Collection is collection of objects which are stored in strcutured manner with specified access mechanism
+main reason Map doesn't extend Collection interface is that add(E e) method of collection interface doesn't support key-value pair like Map interface's put(K,V)
+Map might not extend Collection interface but still it is integral part of Java Collections Framework.
+
+Diff b.w fail-fast and fail-safe Iterators?
+fail-fast th
+
+BlockingQueue -
+The Java BlockingQueue interface, java.util.concurrent.BlockingQueue, represents a queue which is thread safe to put elements into, and take elements out of from. 
+In other words, multiple threads can be inserting and taking elements concurrently from a Java BlockingQueue, without any concurrency issues arising.
+
+Diff b.w Synchronised Collection and Concurrent Collection?
+
+Internal working of HashMap?
+
+Ref:
+https://www.youtube.com/watch?v=KfoNYoVUBJI
+---------
 Initializing a List in Java
 
 The Java.util.List is a child interface of Collection
