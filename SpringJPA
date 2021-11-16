@@ -126,3 +126,29 @@ private Long admission_no;
 Ans: 1. org.hibernate.AnnotationException: Unknown Id.generator
 https://www.overops.com/blog/5-common-hibernate-exceptions-and-how-to-fix-them/
 -----------------
+OneToMany & inner join Query - Spring JPA
+
+Customer to Products -- OneToMany
+
+Customer Entity Class
+@OneToMany(targetEntity=Product.class,cascade=Cascade.Type.ALL)
+@JoinColumn(name="cp_fk", referencedColumnName="id")
+private List<Product> products;
+
+
+
+
+
+CustomerRepository -
+@Query("select c.name,p.productName from Customer c inner join c.products p")
+public String getJoinInformation();\mdwldwmdwldw
+@Query("select new OrderResponse(c.name,p.productName) from Customer c inner join c.products p")
+public List<OrderResponse> getJoinInformation();
+wtever constructor we mentioned has to be present in OrderResponse class.
+
+add the following on top of OrderResponse to avoid other fields(not mentioned in query)
+@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonInclude(JsonInclude.Include.NON_DEFAULT)
+
+Ref:
+https://www.youtube.com/watch?v=8qhaDBCJh6I
