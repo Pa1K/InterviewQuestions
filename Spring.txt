@@ -37,6 +37,9 @@ How do u connect to backend
 @RequestMapping(value="/<uri>", method=RequestMethod.POST, produces="application/json")
 produces="application/json" or "application/xml" - method produces output in that format
 @RequestBody
+
+RequestMappings need to mentioned in @Controller or @RestController class
+if mappings mentioned in a class which is annotation with other annotations, then we will get mapping error 404
 ---------
 2. diff b.w spring and spring boot
 spring - 
