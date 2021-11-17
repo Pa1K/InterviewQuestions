@@ -32,6 +32,13 @@ Spring JPA or other DB frameworks have to use @Repository over DAO classes, for 
 
 https://github.com/Pa1K/RepositoryAnnotation/tree/master/RepositoryAnnonation
 https://www.youtube.com/watch?v=CUQWZHjuq-w
+---------
+
+multiple db connection in spring jpa
+https://www.kindsonthegenius.com/microservices/multiple-database-configuration-for-microservice-in-spring-boot/
+https://www.youtube.com/watch?v=nzszxQbQ5WU
+https://www.youtube.com/watch?v=iDogrHEo4x0
+-----
 
 In your DAO methods, you neither need to surround the code with a try/catch block nor declare throwing an exception in the method signature - true
 This is because DataAccessException (and therefore its subclasses, including DuplicateKeyException) is an unchecked exception that you are not forced to catch.
