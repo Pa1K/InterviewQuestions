@@ -159,3 +159,10 @@ add the following on top of OrderResponse to avoid other fields(not mentioned in
 
 Ref:
 https://www.youtube.com/watch?v=8qhaDBCJh6I
+-----------
+How can we connect two databases in our project
+connect to one of db in spring boot when multiple dbs availablle
+https://www.kindsonthegenius.com/microservices/multiple-database-configuration-for-microservice-in-spring-boot/
+https://www.youtube.com/watch?v=nzszxQbQ5WU
+https://www.youtube.com/watch?v=iDogrHEo4x0
+------------
