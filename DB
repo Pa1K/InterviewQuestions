@@ -5,6 +5,11 @@ select MAX(salary) from emp_table where salary < (select MAX(salary) from emp_ta
 but better approach is
 select salary from emp_table order by salary desc offset 2 limit 1; gives third highest salary
 
+/* to get 4th highest row based on column*/
+select * from sales_by_film_category order by total_sales desc limit 1 offset 3;
+Ref: https://sqlpad.io/sql-playground/
+
+
 equi join
 https://www.dotnettricks.com/learn/sqlserver/difference-between-inner-join-and-equi-join-and-natural-join
 https://www.educative.io/edpresso/what-is-an-equi-join-in-sql
@@ -18,11 +23,9 @@ JOIN TableName2
 ON TableName1.ColumnName = TableName2.ColumnName;
 
 Non equi join uses, other than = symbol like >,<,>=,<=
------------
-/* to get 4th highest row based on column*/
-select * from sales_by_film_category order by total_sales desc limit 1 offset 3;
-Ref: https://sqlpad.io/sql-playground/
--------------
+
+Joins -  https://learnsql.com/blog/sql-join-interview-questions-with-answers/
+
 
 Diff joins in SQL -
 inner join - join, inner join are same
@@ -166,6 +169,70 @@ WHEN Age BETWEEN 15 AND 18 THEN City
 ELSE Age
 END
 );
+
+
+employees.department_id AS ID,
+employee_name AS ‘Employee Name’,
+ we had to use quotes for our ‘Employee Name’ column because this new name contains spaces.
+ 
+ 
+https://www.tutorialgateway.org/sql-dml-ddl-dcl-and-tcl-commands/
+
+https://www.w3schools.com/sql/sql_primarykey.ASP
+
+w3schools.com/sql/sql_constraints.asp
+ 
+https://www.w3schools.com/sql/sql_drop_table.asp
+DROP TABLE Shippers;
+TRUNCATE TABLE table_name;
+
+ALTER TABLE "table_name"
+DROP COLUMN "column_name";
+
+TRUNCATE - DDL command 
+Delete - DML command
+
+
+https://www.oracletutorial.com/oracle-basics/oracle-delete/
+DELETE FROM table_name WHERE condition;
+DELETE FROM sales; -- removes all info from table
+
+
+
+CREATE TABLE order_items 
+(
+    order_id   NUMBER( 12, 0 )                                , 
+    -- other columns
+    -- ...
+    CONSTRAINT fk_order_items_orders 
+    FOREIGN KEY( order_id ) 
+    REFERENCES orders( order_id ) 
+    ON DELETE CASCADE
+);
+
+
+normalisation
+denormalisation
+
+
+select * from students where roll_no between 10 and 50;
+select * from students where roll_no in (10,1,2);
+
+where & having clause
+having - used with select , along with GROUP BY
+
+aggregate functions -
+max(),count(),sum(),avg()
+
+scalar functions -
+return a single value based on input value
+UCASE(),NOW()
+
+first n characters of a string,
+substring(colName,1,n)
+right(colName,n)
+
+stuffand replacement function
 
 
 
